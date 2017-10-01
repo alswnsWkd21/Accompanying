@@ -4,12 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="smc.minjoon.accompanying.DaummapActivity">
+
     <RelativeLayout
         android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
+    <TextView
+        android:id="@+id/tv01"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="aaa"
+        android:textSize="30dp"/>
 </LinearLayout>
