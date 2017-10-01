@@ -18,6 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import net.daum.android.map.MapViewEventListener;
+import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
@@ -49,7 +51,9 @@ public class DaummapActivity extends AppCompatActivity {
             lm.removeUpdates( mLocationListener );    // Stop the update if it is in progress.
             lm.requestLocationUpdates( LocationManager.GPS_PROVIDER , 0, 0, mLocationListener );
 
+
         }
+
 
         // Using TedPermission library
 
@@ -122,7 +126,13 @@ public class DaummapActivity extends AppCompatActivity {
                 userlocation = location;
                 mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(latitude, longitude), 2,true);
                 tv01.setText(Double.toString(longitude)+"ㅇㅇ"+Double.toString(latitude));
-
+                MapPOIItem marker = new MapPOIItem();
+                marker.setItemName("Default Marker");
+                marker.setTag(0);
+                marker.setMapPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude));
+                marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+                marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+                mapView.addPOIItem(marker);
                 lm.removeUpdates( this );
 
             }
