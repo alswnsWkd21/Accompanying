@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -22,6 +23,20 @@ import net.daum.android.map.MapViewEventListener;
 import net.daum.mf.map.api.MapPOIItem;
 import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 public class DaummapActivity extends AppCompatActivity {
     private String TAG = "permissionstatus";
@@ -53,14 +68,70 @@ public class DaummapActivity extends AppCompatActivity {
 
 
         }
-
-
         // Using TedPermission library
-
-
     }
 
-    ;
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new MyAsyncTask().execute("http://www.jeju.go.kr/rest/JejuWelfareFacilitieService/getJejuWelfareFacilitieList");
+    }
+
+    class MyAsyncTask extends AsyncTask<String,MapPOIItem,Void>{
+
+        protected  void onPreExecute(){
+            super.onPreExecute();
+
+        }
+        @Override
+        protected Void doInBackground(String... params) {
+            try{
+                URL url  = new URL(params[0]);
+                InputStream is = url.openStream();
+
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = factory.newDocumentBuilder();
+
+                Document doc = builder.parse(is);
+                Element root = doc.getDocumentElement();
+
+                NodeList nl = root.getElementsByTagName("item");
+
+
+
+                for(int i =0; i<nl.getLength(); i++){
+                    Element e = (Element)nl.item(i);
+                    MapPOIItem marker = new MapPOIItem();// 마커를 추가하기위한 코드 시작
+                    marker.setItemName(e.getElementsByTagName("name").item(0).getTextContent());
+                    marker.setTag(0);
+                    marker.setMapPoint(MapPoint.mapPointWithGeoCoord(Double.parseDouble(e.getElementsByTagName("latitude").item(0).getTextContent()), Double.parseDouble(e.getElementsByTagName("longitude").item(0).getTextContent())));
+                    marker.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
+                    marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
+                    publishProgress(marker);
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(MapPOIItem... values) {
+            mapView.addPOIItem(values[0]);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(DaummapActivity.this, "꺼짐",Toast.LENGTH_SHORT).show();
+        }
+    }
 
     private boolean grantExternalStoragePermission() {
         if (Build.VERSION.SDK_INT >= 23) {
@@ -85,11 +156,6 @@ public class DaummapActivity extends AppCompatActivity {
             lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1,mLocationListener);
             return true;
         }
-
-
-
-
-
     }
 
 
@@ -108,11 +174,6 @@ public class DaummapActivity extends AppCompatActivity {
 
     }
 
-
-    private void registerLocationUpdates() {
-
-    }
-
     private final LocationListener mLocationListener = new LocationListener() {
         double longitude;
         double latitude;
@@ -126,7 +187,7 @@ public class DaummapActivity extends AppCompatActivity {
                 userlocation = location;
                 mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(latitude, longitude), 2,true);
                 tv01.setText(Double.toString(longitude)+"ㅇㅇ"+Double.toString(latitude));
-                MapPOIItem marker = new MapPOIItem();
+                MapPOIItem marker = new MapPOIItem();// 마커를 추가하기위한 코드 시작
                 marker.setItemName("Default Marker");
                 marker.setTag(0);
                 marker.setMapPoint(MapPoint.mapPointWithGeoCoord(latitude, longitude));
