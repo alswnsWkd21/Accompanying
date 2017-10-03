@@ -42,7 +42,17 @@
                 <action android:name="RestartReceiver.restart" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
 
+
+        출처: http://ccdev.tistory.com/27 [초보코딩왕의 Power Dev.]
 
 
     </application>
