@@ -16,6 +16,9 @@ import android.support.annotation.Nullable;
 
 public class ScreenService extends Service {
         private ScreenReceiver mReceiver = null;
+        private PackageReceiver pReceiver;
+
+
         @Override
         public IBinder onBind(Intent intent) {
             return null;
@@ -28,6 +31,15 @@ public class ScreenService extends Service {
             IntentFilter filter = new IntentFilter(Intent.ACTION_SCREEN_OFF);
             registerReceiver(mReceiver, filter);
             registerRestartAlarm(true);
+
+            pReceiver = new PackageReceiver();
+            IntentFilter pFilter = new IntentFilter(Intent.ACTION_PACKAGE_ADDED);
+            pFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+            pFilter.addAction(Intent.ACTION_PACKAGE_REPLACED);
+            pFilter.addDataScheme("package");
+            registerReceiver(pReceiver, pFilter);
+
+
 
         }
 
@@ -60,6 +72,9 @@ public class ScreenService extends Service {
             }
             mReceiver.reenableKeyguard();
             registerRestartAlarm(false);
+            if(pReceiver != null){
+                unregisterReceiver(pReceiver);
+            }
         }
     public void registerRestartAlarm(boolean isOn){
         Intent intent = new Intent(ScreenService.this, RestartReceiver.class);
