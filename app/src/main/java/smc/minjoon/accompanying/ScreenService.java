@@ -51,8 +51,7 @@ public class ScreenService extends Service {
 
             if(mReceiver != null){
                 unregisterReceiver(mReceiver);
+                mReceiver.reenableKeyguard();
             }
         }
-
-
 }
