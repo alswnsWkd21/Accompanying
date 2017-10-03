@@ -26,6 +26,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btn01 =  (Button) findViewById(R.id.btn01);
+        Button btn02 =  (Button) findViewById(R.id.btn02);
+        Button btn03 =  (Button) findViewById(R.id.btn03);
+        Button btn04 =  (Button) findViewById(R.id.btn04);
+        Button btn05 =  (Button) findViewById(R.id.btn05);
+
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,6 +38,33 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        btn02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, SosActivity.class);
+                startActivity(i);
+            }
+        });
+        btn03.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startService(new Intent(MainActivity.this, AlwaysOnTopService.class));
+            }
+        });
+        btn04.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                stopService(new Intent(MainActivity.this, AlwaysOnTopService.class));
+            }
+        });
+        btn05.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ConfigActivity.class);
+                startActivity(i);
+            }
+        });
+
 
     }
 

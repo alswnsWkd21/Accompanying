@@ -40,7 +40,6 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class DaummapActivity extends AppCompatActivity {
     private String TAG = "permissionstatus";
-    String a ;
     LocationManager lm;
     Location userlocation;
     TextView tv01;
@@ -51,9 +50,7 @@ public class DaummapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_daummap);
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         boolean isGrantStorage = grantExternalStoragePermission();
-
          tv01 = (TextView) findViewById(R.id.tv01);
-
         if (isGrantStorage) {
 // 일반처리.   // MapView 객체생성 및 API Key 설정
             Toast.makeText(this, "권한을 허락하셨습니다.", Toast.LENGTH_SHORT).show();
@@ -61,27 +58,20 @@ public class DaummapActivity extends AppCompatActivity {
             mapView.setDaumMapApiKey("fddf269318894c9791ec626cc3d6c8f9");
             RelativeLayout mapViewContainer = (RelativeLayout) findViewById(R.id.map_view);
             mapViewContainer.addView(mapView);
-
             LocationManager lm = (LocationManager)getSystemService(Context. LOCATION_SERVICE);
             lm.removeUpdates( mLocationListener );    // Stop the update if it is in progress.
             lm.requestLocationUpdates( LocationManager.GPS_PROVIDER , 0, 0, mLocationListener );
-
-
         }
         // Using TedPermission library
     }
-
     @Override
     protected void onResume() {
         super.onResume();
         new MyAsyncTask().execute("http://www.jeju.go.kr/rest/JejuWelfareFacilitieService/getJejuWelfareFacilitieList");
     }
-
     class MyAsyncTask extends AsyncTask<String,MapPOIItem,Void>{
-
         protected  void onPreExecute(){
             super.onPreExecute();
-
         }
         @Override
         protected Void doInBackground(String... params) {
@@ -94,10 +84,7 @@ public class DaummapActivity extends AppCompatActivity {
 
                 Document doc = builder.parse(is);
                 Element root = doc.getDocumentElement();
-
                 NodeList nl = root.getElementsByTagName("item");
-
-
 
                 for(int i =0; i<nl.getLength(); i++){
                     Element e = (Element)nl.item(i);
@@ -120,32 +107,26 @@ public class DaummapActivity extends AppCompatActivity {
             }
             return null;
         }
-
         @Override
         protected void onProgressUpdate(MapPOIItem... values) {
             mapView.addPOIItem(values[0]);
         }
-
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             Toast.makeText(DaummapActivity.this, "꺼짐",Toast.LENGTH_SHORT).show();
         }
     }
-
     private boolean grantExternalStoragePermission() {
         if (Build.VERSION.SDK_INT >= 23) {
-
             if ((checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) && (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
                 Log.v(TAG, "Permission is granted");
                 lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, mLocationListener);
                 lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1,mLocationListener);
                 return true;
                 //만약 두개의 퍼미션이 전부 허락되어있다면 true반환
-
             } else {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-
                 //만약 두개의 퍼미션이 전부 안되어 있다면 요청
                 return false;
             }
@@ -157,8 +138,6 @@ public class DaummapActivity extends AppCompatActivity {
             return true;
         }
     }
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -171,9 +150,7 @@ public class DaummapActivity extends AppCompatActivity {
                     Toast.makeText(this, "access fine권한을 거절하셨습니다. 도움길서비스에 제약이 있습니다.", Toast.LENGTH_LONG).show();
                 }
         }
-
     }
-
     private final LocationListener mLocationListener = new LocationListener() {
         double longitude;
         double latitude;
@@ -195,7 +172,6 @@ public class DaummapActivity extends AppCompatActivity {
                 marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
                 mapView.addPOIItem(marker);
                 lm.removeUpdates( this );
-
             }
             else{
                 longitude = location.getLongitude();
@@ -203,27 +179,18 @@ public class DaummapActivity extends AppCompatActivity {
                 accuracy = location.getAccuracy();
                 mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(latitude, longitude), 2,true);
                 tv01.setText(Double.toString(longitude)+"ㅇㅇ"+Double.toString(latitude));
-
                 lm.removeUpdates( this );
             }
         }
-
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
-
         }
-
         @Override
         public void onProviderEnabled(String provider) {
-
         }
-
         @Override
         public void onProviderDisabled(String provider) {
-
         }
     };
-
-
 }
 

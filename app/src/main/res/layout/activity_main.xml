@@ -9,9 +9,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/btn01"
+            android:layout_weight="1"
             />
-
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btn02"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btn03"
+            android:text="sos버튼켜기"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btn04"
+            android:text="sos버튼끄기"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/btn05"
+            android:text="잠금화면설정"
+            android:layout_weight="1"/>
 </LinearLayout>
 
 

@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
     <meta-data
         android:name="com.kakao.sdk.AppKey"
         android:value="fddf269318894c9791ec626cc3d6c8f9" />
@@ -23,7 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DaummapActivity"></activity>
+        <activity android:name=".DaummapActivity" />
+        <activity android:name=".SosActivity" />
+        <service android:name=".AlwaysOnTopService"/>
+        <activity android:name=".LockScreenActivity" />
+        <activity android:name=".ConfigActivity" />
+        <service android:name=".ScreenService" />
+        <receiver android:name=".ScreenReceiver" />
     </application>
 
 </manifest>
