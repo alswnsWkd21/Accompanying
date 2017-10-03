@@ -35,6 +35,16 @@
         <activity android:name=".ConfigActivity" />
         <service android:name=".ScreenService" />
         <receiver android:name=".ScreenReceiver" />
+        <receiver
+            android:name=".RestartReceiver"
+            android:process=".remote" >
+            <intent-filter>
+                <action android:name="RestartReceiver.restart" />
+            </intent-filter>
+        </receiver>
+
+
+
     </application>
 
 </manifest>
