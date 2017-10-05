@@ -26,6 +26,7 @@ import java.util.TimerTask;
 
 public class LockScreenActivity extends AppCompatActivity {
     int num;
+    String com;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,14 +48,41 @@ public class LockScreenActivity extends AppCompatActivity {
             @Override
             public boolean onLongClick(View v) {
                 vide.vibrate(1000);
-                sendSMS("01068800161","이 문자가 당신에게 도착했으면 전화주세요");
+                Intent intent = new Intent(LockScreenActivity.this, PopupActivity.class);
+                intent.putExtra("data", "Test Popup");
+                startActivityForResult(intent, 1);
+                new Timer().schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        if(com.equals("Close")){
+                            cancel();
+                        }else{
+                            sendSMS("01068800161","확인테스트");
+                        }
+                    }
+                },10000);
                 return true;
             }
         });
+
         ll.addView(btnsos);
 
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode==1){
+            if(resultCode==RESULT_OK){
+                //데이터 받기
+                 com = data.getStringExtra("result");
+
+            }
+        }
+    }
+
+
+
 
     private void sendSMS(String phoneNumber, String message){
         String SENT = "SMS_SENT";
