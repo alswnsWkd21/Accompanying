@@ -6,6 +6,7 @@ package smc.minjoon.accompanying;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -26,7 +27,7 @@ public class AutoRepeatButton extends AppCompatButton {
             performClick();
             num +=1;
             if(num >=5){
-         //여기서 이제
+                performLongClick();
                 num =0;
             }
 
@@ -79,4 +80,6 @@ public class AutoRepeatButton extends AppCompatButton {
         super(context);
         commonConstructorCode();
     }
+
+
 }
