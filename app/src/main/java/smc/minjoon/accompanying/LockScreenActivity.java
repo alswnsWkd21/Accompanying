@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -27,11 +28,14 @@ import java.util.TimerTask;
 public class LockScreenActivity extends AppCompatActivity {
     int num;
     String com;
+    DBManager helper;
+    ArrayList<SingleItem> items = new ArrayList<SingleItem>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lock_screen);
-
+        helper = new DBManager(this, "Number", null, 1);
+        items= helper.getResult();
         LinearLayout ll = (LinearLayout) findViewById(R.id.layout01);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED|WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         final Vibrator vide = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -57,7 +61,10 @@ public class LockScreenActivity extends AppCompatActivity {
                         if(com.equals("Close")){
                             cancel();
                         }else{
-                            sendSMS("01068800161","확인테스트");
+                            for (int i =0; i<=items.size(); i++){
+                                sendSMS(items.get(i).getNumber(),items.get(i).getContent());
+                            }
+
                         }
                     }
                 },10000);

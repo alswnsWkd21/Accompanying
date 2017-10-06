@@ -68,7 +68,12 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".PopupActivity" android:theme="@android:style/Theme.Dialog"/>
+        <activity
+            android:name=".PopupActivity"
+            android:theme="@android:style/Theme.Dialog" />
+        <activity android:name=".NoteeditActivity" />
+        <activity android:name=".ContentActivity" />
+        <activity android:name=".NumberActivity"></activity>
     </application>
 
 </manifest>

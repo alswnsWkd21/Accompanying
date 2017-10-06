@@ -29,6 +29,7 @@ public class AutoRepeatButton extends AppCompatButton {
             if(num >=5){
                 performLongClick();
                 num =0;
+                return;
             }
 
             //Schedule the next repetitions of the click action, using a faster repeat
