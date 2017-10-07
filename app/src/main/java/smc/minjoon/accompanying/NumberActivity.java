@@ -121,7 +121,7 @@ public class NumberActivity extends AppCompatActivity {
     }
 
 
-    public  class ListViewAdapter extends BaseAdapter { //  여기서 data 즉 items 관리 및 getview 해준다.
+    public class ListViewAdapter extends BaseAdapter { //  여기서 data 즉 items 관리 및 getview 해준다.
         public ArrayList<SingleItem> items = new ArrayList<SingleItem>();
 
         @Override

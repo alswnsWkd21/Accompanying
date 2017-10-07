@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="83dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+     >
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#fff"
+        android:text="장애인"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="#6DD9FF"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#fff"
+        android:text="도우미"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:layout_weight="1"
+        android:layout_marginRight="20dp"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="359dp"
+        android:layout_weight="0.76">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:text="이   름"
+                android:textSize="20dp"
+                android:textAlignment="center"
+               />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:text="전화번호"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:ems="10"
+                android:id="@+id/editText6"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:text="성   별"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:text="아 이 디"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="비밀번호"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editText7"
+                android:layout_weight="1" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:text="비밀번호확인"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editText8"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="첨부파일 추가해야돼"
+            android:textSize="20dp"/>
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="시작하기"
+        android:textColor="#fff"
+        android:background="#00B0F0"
+        android:textSize="30dp"
+        android:textAlignment="center"
+        android:gravity="center" />
+</LinearLayout>

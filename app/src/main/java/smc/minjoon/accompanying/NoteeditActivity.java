@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import static smc.minjoon.accompanying.R.layout.item;
 
@@ -36,8 +37,8 @@ public class NoteeditActivity extends AppCompatActivity {
         }
 
 
-        Button btn01 = (Button) findViewById(R.id.btn01);
-        Button btn02 = (Button) findViewById(R.id.btn02);
+        ImageButton btn01 = (ImageButton) findViewById(R.id.btn01);
+        ImageButton btn02 = (ImageButton) findViewById(R.id.btn02);
 
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override

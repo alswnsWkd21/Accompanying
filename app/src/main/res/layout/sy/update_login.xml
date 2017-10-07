@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#fff"
+    android:background="#00B0F0"
+    android:weightSum="1">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="151dp"
+        android:src="@drawable/hand"
+        android:layout_margin="30dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="10dp"
+        >
+
+        <TextView
+            android:text="아이디 : "
+            android:textSize="20dp"
+            android:layout_width="103dp"
+            android:layout_height="45dp"
+            android:textAlignment="center"
+            android:id="@+id/id"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:id="@+id/et_id"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:weightSum="1">
+
+        <TextView
+            android:text="비밀번호 : "
+            android:textSize="20dp"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/pw"
+            android:textAlignment="center"
+            />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:ems="10"
+            android:id="@+id/et_pw"
+            android:layout_weight="0.95" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:weightSum="1"
+        >
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="29dp"
+            android:id="@+id/checkBox"
+            android:layout_margin="10dp"
+            android:text="자동 로그인"
+           />
+
+    </LinearLayout>
+
+    <Button
+        android:text="로 그 인"
+        android:textColor="#fff"
+        android:textSize="30dp"
+        android:background="#00B0F0"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:textAlignment="center"
+        android:id="@+id/button"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+
+        />
+
+</LinearLayout>

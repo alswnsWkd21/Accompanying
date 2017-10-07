@@ -25,20 +25,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".DaummapActivity" />
         <activity android:name=".SosActivity" />
 
         <service android:name=".AlwaysOnTopService" />
 
         <activity android:name=".LockScreenActivity" />
-        <activity android:name=".ConfigActivity" />
 
         <service android:name=".ScreenService" />
 
@@ -73,7 +73,11 @@
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".NoteeditActivity" />
         <activity android:name=".ContentActivity" />
-        <activity android:name=".NumberActivity"></activity>
+        <activity android:name=".NumberActivity" />
+        <activity android:name=".InformSos" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".SettingsosActivity" />
+        <activity android:name=".SettinglockActivity"></activity>
     </application>
 
 </manifest>

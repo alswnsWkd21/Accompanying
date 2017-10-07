@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -24,59 +25,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Button btn01 =  (Button) findViewById(R.id.btn01);
-        Button btn02 =  (Button) findViewById(R.id.btn02);
-        Button btn03 =  (Button) findViewById(R.id.btn03);
-        Button btn04 =  (Button) findViewById(R.id.btn04);
-        Button btn05 =  (Button) findViewById(R.id.btn05);
-        Button btn06 =  (Button) findViewById(R.id.btn06);
-
+        ImageButton btn01 = (ImageButton ) findViewById(R.id.btn01);
+        ImageButton btn02 = (ImageButton ) findViewById(R.id.btn02);
+        ImageButton btn03 = (ImageButton ) findViewById(R.id.btn03);
         btn01.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, DaummapActivity.class);
-                startActivity(i);
-            }
+        @Override
+        public void onClick(View v) {
+        Intent i = new Intent(MainActivity.this, DaummapActivity.class);
+        startActivity(i);
+        }
         });
         btn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SosActivity.class);
+                Intent i = new Intent(MainActivity.this, InformSos.class);
                 startActivity(i);
             }
         });
         btn03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startService(new Intent(MainActivity.this, AlwaysOnTopService.class));
-            }
-        });
-        btn04.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopService(new Intent(MainActivity.this, AlwaysOnTopService.class));
-            }
-        });
-        btn05.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ConfigActivity.class);
-                startActivity(i);
-            }
-        });
-        btn06.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, NumberActivity.class);
+                Intent i = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(i);
             }
         });
 
-
     }
 
     }
-
-
-
