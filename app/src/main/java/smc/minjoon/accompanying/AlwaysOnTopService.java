@@ -66,10 +66,11 @@ public class AlwaysOnTopService extends Service {
         super.onCreate();
 
         mPopupView = new TextView(AlwaysOnTopService.this);
-        mPopupView.setText("위급상황시 누르세요");
-        mPopupView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-        mPopupView.setTextColor(Color.BLUE);
-        mPopupView.setBackgroundColor(Color.argb(127, 0, 255, 255));
+        mPopupView.setBackgroundResource(R.drawable.widget); //이거 수정한거!!
+//        mPopupView.setText("위급상황시 누르세요");
+//        mPopupView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+//        mPopupView.setTextColor(Color.BLUE);
+//        mPopupView.setBackgroundColor(Color.argb(127, 0, 255, 255));
 
         mPopupView.setOnTouchListener(mViewTouchListener);
 

@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.LockScreen.News;
 
 /**
  * Created by skaqn on 2017-10-07.

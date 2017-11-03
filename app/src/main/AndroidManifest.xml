@@ -38,11 +38,11 @@
 
         <service android:name=".AlwaysOnTopService" />
 
-        <activity android:name=".LockScreenActivity" />
+        <activity android:name=".LockScreen.LockScreenActivity" />
 
-        <service android:name=".ScreenService" />
+        <service android:name=".LockScreen.ScreenService" />
 
-        <receiver android:name=".ScreenReceiver" />
+        <receiver android:name=".LockScreen.ScreenReceiver" />
         <receiver
             android:name=".RestartReceiver"
             android:process=".remote">
@@ -71,13 +71,13 @@
         <activity
             android:name=".PopupActivity"
             android:theme="@android:style/Theme.Dialog" />
-        <activity android:name=".NoteeditActivity" />
-        <activity android:name=".ContentActivity" />
-        <activity android:name=".NumberActivity" />
-        <activity android:name=".InformSos" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".SettingsosActivity" />
-        <activity android:name=".SettinglockActivity"></activity>
+        <activity android:name=".MainSettingButton.ContactButton.NoteeditActivity" />
+        <activity android:name=".MainSettingButton.ContactButton.ContentActivity" />
+        <activity android:name=".MainSettingButton.ContactButton.NumberActivity" />
+        <activity android:name=".MainSosButton.InformSos" />
+        <activity android:name=".MainSettingButton.SettingsActivity" />
+        <activity android:name=".MainSettingButton.SettingsosActivity" />
+        <activity android:name=".MainSettingButton.SettinglockActivity"></activity>
     </application>
 
 </manifest>

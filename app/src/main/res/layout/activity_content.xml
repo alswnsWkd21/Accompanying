@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
 
-    tools:context="smc.minjoon.accompanying.ContentActivity">
+    tools:context="smc.minjoon.accompanying.MainSettingButton.ContactButton.ContentActivity">
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

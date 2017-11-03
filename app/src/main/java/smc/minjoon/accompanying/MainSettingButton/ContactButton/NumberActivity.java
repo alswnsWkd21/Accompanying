@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.MainSettingButton.ContactButton;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+
+import smc.minjoon.accompanying.R;
 
 public class NumberActivity extends AppCompatActivity {
     final public static int WRITE = 0;

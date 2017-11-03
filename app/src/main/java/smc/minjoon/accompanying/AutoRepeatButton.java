@@ -31,7 +31,6 @@ public class AutoRepeatButton extends AppCompatButton {
                 num =0;
                 return;
             }
-
             //Schedule the next repetitions of the click action, using a faster repeat
             // interval than the initial repeat delay interval.
             postDelayed(repeatClickWhileButtonHeldRunnable, repeatIntervalInMilliseconds);

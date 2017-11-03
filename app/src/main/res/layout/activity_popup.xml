@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#fff"
     android:orientation="vertical"
-    android:layout_width="350dp"
-    android:layout_height="200dp"
+    android:layout_width="300dp"
+    android:layout_height="250dp"
     android:layout_gravity="center"
     android:id="@+id/ll01"
 
@@ -31,7 +31,8 @@
         android:padding="5dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:weightSum="1">
         <View
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -50,10 +51,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="위급상황 메시지가 날라갑니다!"
+            android:text="위급상황 메시지가"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:layout_marginTop="5dp"
+            android:textColor="#000"
+            android:alpha="0.87"
+            android:gravity="center"
+            android:layout_weight="0.42" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="날라갑니다!"
             android:textSize="25dp"
+            android:textAlignment="center"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="12dp"
             android:textColor="#000"
@@ -75,15 +88,17 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
             android:text="취         소"
             android:textSize="30dp"
             android:textColor="#fff"
             android:gravity="center"
-            android:background="#00B0F0"
+            android:background="#35C7F1"
             android:layout_width="match_parent"
             android:layout_height="53dp"
-            android:onClick="mOnClose"/>
+            android:onClick="mOnClose"
+            android:id="@+id/button" />
     </LinearLayout>
     <!--// 닫기 버튼 -->
 </LinearLayout>

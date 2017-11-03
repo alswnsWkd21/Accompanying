@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.MainSettingButton.ContactButton;
 
 /**
  * Created by skaqn on 2017-10-06.

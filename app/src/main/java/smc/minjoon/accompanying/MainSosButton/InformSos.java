@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.MainSosButton;
 
 /**
  * Created by SY on 2017-10-07.
@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import smc.minjoon.accompanying.R;
 
 
 public class InformSos extends ActionBarActivity implements OnClickListener{
@@ -46,7 +47,7 @@ public class InformSos extends ActionBarActivity implements OnClickListener{
 
         viewPager = (ViewPager)findViewById(R.id.viewPager);
 
-        smc.minjoon.accompanying.MyViewPagerAdapter adapter = new smc.minjoon.accompanying.MyViewPagerAdapter(getSupportFragmentManager());
+        MyViewPagerAdapter adapter = new MyViewPagerAdapter(getSupportFragmentManager());
 
 
 
@@ -74,83 +75,83 @@ public class InformSos extends ActionBarActivity implements OnClickListener{
 
 
 
-        handler = new Handler(){
-
-
-
-            public void handleMessage(android.os.Message msg) {
-
-                if(p==0){
-
-                    viewPager.setCurrentItem(1);
-
-                    p++;
-
-                    v=1;
-
-                }if(p==1&&v==0){
-
-                    viewPager.setCurrentItem(1);
-
-                    p--;
-
-                }if(p==1&&v==1){
-
-                    viewPager.setCurrentItem(2);
-
-                    p++;
-
-                }if(p==2){
-
-                    viewPager.setCurrentItem(1);
-
-                    p--;
-
-                    v=0;
-
-                }
-
-            }
-
-        };
-
-
-
-        thread = new Thread(){
-
-            //run은 jvm이 쓰레드를 채택하면, 해당 쓰레드의 run메서드를 수행한다.
-
-            public void run() {
-
-                super.run();
-
-                while(true){
-
-                    try {
-
-                        Thread.sleep(2000);
-
-                        handler.sendEmptyMessage(0);
-
-                    } catch (InterruptedException e) {
-
-                        // TODO Auto-generated catch block
-
-                        e.printStackTrace();
-
-                    }
-
-
-
-
-
-                }
-
-            }
-
-        };
-
-        thread.start();
+//        handler = new Handler(){
+//
+//
+//
+//            public void handleMessage(android.os.Message msg) {
+//
+//                if(p==0){
+//
+//                    viewPager.setCurrentItem(1);
+//
+//                    p++;
+//
+//                    v=1;
+//
+//                }if(p==1&&v==0){
+//
+//                    viewPager.setCurrentItem(1);
+//
+//                    p--;
+//
+//                }if(p==1&&v==1){
+//
+//                    viewPager.setCurrentItem(2);
+//
+//                    p++;
+//
+//                }if(p==2){
+//
+//                    viewPager.setCurrentItem(1);
+//
+//                    p--;
+//
+//                    v=0;
+//
+//                }
+//
+//            }
+//
+//        };
+//
+//
+//
+//        thread = new Thread(){
+//
+//            //run은 jvm이 쓰레드를 채택하면, 해당 쓰레드의 run메서드를 수행한다.
+//
+//            public void run() {
+//
+//                super.run();
+//
+//                while(true){
+//
+//                    try {
+//
+//                        Thread.sleep(2000);
+//
+//                        handler.sendEmptyMessage(0);
+//
+//                    } catch (InterruptedException e) {
+//
+//                        // TODO Auto-generated catch block
+//
+//                        e.printStackTrace();
+//
+//                    }
+//
+//
+//
+//
+//
+//                }
+//
+//            }
+//
+//        };
+//
+//        thread.start();
 
 
 

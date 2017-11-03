@@ -1,13 +1,9 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.MainSosButton;
 
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import smc.minjoon.accompanying.FragmentA;
-import smc.minjoon.accompanying.FragmentB;
-import smc.minjoon.accompanying.FragmentC;
 
 
 public class MyViewPagerAdapter extends FragmentStatePagerAdapter{

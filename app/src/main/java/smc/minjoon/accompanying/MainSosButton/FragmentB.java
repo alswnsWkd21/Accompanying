@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.MainSosButton;
 
 /**
  * Created by SY on 2017-10-07.
@@ -14,11 +14,10 @@ import android.view.View;
 
 import android.view.ViewGroup;
 
+import smc.minjoon.accompanying.R;
 
 
-
-
-public class FragmentC extends Fragment{
+public class FragmentB extends Fragment{
 
 
 

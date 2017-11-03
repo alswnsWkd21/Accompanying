@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import smc.minjoon.accompanying.LockScreen.ScreenService;
+
 /**
  * Created by skaqn on 2017-10-03.
  */

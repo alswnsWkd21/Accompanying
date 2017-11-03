@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.MainSettingButton.ContactButton;
 
 /**
  * Created by skaqn on 2017-10-06.
@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+
+import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
 
 /**
  * Created by skaqn on 2017-01-30.

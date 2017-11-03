@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.LockScreen;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -6,25 +6,21 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
-
 
 import com.squareup.picasso.Picasso;
 
@@ -35,7 +31,6 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Timer;
@@ -44,6 +39,16 @@ import java.util.TimerTask;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
+import smc.minjoon.accompanying.AutoRepeatButton;
+import smc.minjoon.accompanying.LockScreen.News.LockItem;
+import smc.minjoon.accompanying.LockScreen.News.LockItemView;
+import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
+import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
+import smc.minjoon.accompanying.LockScreen.News.OpenGraph;
+import smc.minjoon.accompanying.LockScreen.News.OpenGraphData;
+import smc.minjoon.accompanying.PopupActivity;
+import smc.minjoon.accompanying.R;
 
 public class LockScreenActivity extends AppCompatActivity {
 
@@ -80,7 +85,17 @@ public class LockScreenActivity extends AppCompatActivity {
         final Vibrator vide = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
 
+
         AutoRepeatButton btnsos = new AutoRepeatButton(LockScreenActivity.this);
+        //여기부터 수정했음
+//        ll.width = WindowManager.LayoutParams.WRAP_CONTENT; //버튼의 너비를 설정(픽셀단위로도 지정가능)
+//        ll.height = WindowManager.LayoutParams.WRAP_CONTENT; //버튼의 높이를 설정(픽셀단위로도 지정 가능)
+//        ll.gravity = Gravity.CENTER; //버튼의 Gravity를 지정
+
+        btnsos.setText("sos"); //버튼에 들어갈 텍스트를 지정(String)
+        btnsos.setBackgroundColor(Color.RED);
+        //여기까지!
+
         ll.addView(btnsos);
 
         btnsos.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +138,7 @@ public class LockScreenActivity extends AppCompatActivity {
         if(requestCode==1){
             if(resultCode==RESULT_OK){
                 //데이터 받기
-                 com = data.getStringExtra("result");
+                com = data.getStringExtra("result");
 
             }
         }
@@ -138,7 +153,7 @@ public class LockScreenActivity extends AppCompatActivity {
 
         PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
         PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
-       br = new BroadcastReceiver() {
+        br = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
                 switch(getResultCode()){

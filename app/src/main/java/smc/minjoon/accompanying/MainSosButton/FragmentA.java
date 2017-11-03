@@ -1,8 +1,4 @@
-package smc.minjoon.accompanying;
-
-/**
- * Created by SY on 2017-10-07.
- */
+package smc.minjoon.accompanying.MainSosButton;
 
 import android.os.Bundle;
 
@@ -14,11 +10,10 @@ import android.view.View;
 
 import android.view.ViewGroup;
 
+import smc.minjoon.accompanying.R;
 
 
-
-
-public class FragmentB extends Fragment{
+public class FragmentA extends Fragment{
 
 
 
@@ -28,7 +23,7 @@ public class FragmentB extends Fragment{
 
 
 
-        return inflater.inflate(R.layout.fragment_b, container, false);
+        return inflater.inflate(R.layout.fragment_a, container, false);
 
     }
 

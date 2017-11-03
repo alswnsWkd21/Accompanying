@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.LockScreen;
 
 import android.app.KeyguardManager;
 import android.content.BroadcastReceiver;
@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+
+import smc.minjoon.accompanying.LockScreen.LockScreenActivity;
 
 /**
  * Created by skaqn on 2017-10-03.
