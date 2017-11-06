@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import smc.minjoon.accompanying.AlwaysOnTopService;
+import smc.minjoon.accompanying.MainSosButton.Sos.AlwaysOnTopService;
 import smc.minjoon.accompanying.R;
 
 public class SettingsosActivity extends AppCompatActivity {

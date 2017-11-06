@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.MainSosButton;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+import smc.minjoon.accompanying.R;
 
 public class PopupActivity extends Activity {
     int datanum;

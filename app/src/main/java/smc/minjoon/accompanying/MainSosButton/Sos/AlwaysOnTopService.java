@@ -1,20 +1,19 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.MainSosButton.Sos;
 
 import android.app.Service;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import smc.minjoon.accompanying.R;
 
 /**
  * Created by skaqn on 2017-10-03.

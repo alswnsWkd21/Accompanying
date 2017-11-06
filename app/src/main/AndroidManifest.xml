@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+    <uses-permission android:name="android.permission.WRITE_OWNER_DATA" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -13,10 +16,6 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-    <meta-data
-        android:name="com.kakao.sdk.AppKey"
-        android:value="fddf269318894c9791ec626cc3d6c8f9" />
 
     <application
         android:allowBackup="true"
@@ -33,10 +32,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".DaummapActivity" />
-        <activity android:name=".SosActivity" />
 
-        <service android:name=".AlwaysOnTopService" />
+        <service android:name=".MainSosButton.Sos.AlwaysOnTopService" />
 
         <activity android:name=".LockScreen.LockScreenActivity" />
 
@@ -44,21 +41,21 @@
 
         <receiver android:name=".LockScreen.ScreenReceiver" />
         <receiver
-            android:name=".RestartReceiver"
+            android:name=".LockScreen.RestartReceiver"
             android:process=".remote">
             <intent-filter>
                 <action android:name="RestartReceiver.restart" />
             </intent-filter>
         </receiver>
         <receiver
-            android:name=".BootReceiver"
+            android:name=".LockScreen.BootReceiver"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".PackageReceiver">
+        <receiver android:name=".LockScreen.PackageReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
@@ -69,7 +66,7 @@
         </receiver>
 
         <activity
-            android:name=".PopupActivity"
+            android:name=".MainSosButton.PopupActivity"
             android:theme="@android:style/Theme.Dialog" />
         <activity android:name=".MainSettingButton.ContactButton.NoteeditActivity" />
         <activity android:name=".MainSettingButton.ContactButton.ContentActivity" />
@@ -77,7 +74,8 @@
         <activity android:name=".MainSosButton.InformSos" />
         <activity android:name=".MainSettingButton.SettingsActivity" />
         <activity android:name=".MainSettingButton.SettingsosActivity" />
-        <activity android:name=".MainSettingButton.SettinglockActivity"></activity>
+        <activity android:name=".MainSettingButton.SettinglockActivity" />
+        <activity android:name=".MainMapButton.TmapActivity"></activity>
     </application>
 
 </manifest>

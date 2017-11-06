@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.LockScreen;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,12 +10,13 @@ import smc.minjoon.accompanying.LockScreen.ScreenService;
  * Created by skaqn on 2017-10-03.
  */
 
-public class BootReceiver extends BroadcastReceiver {
+public class RestartReceiver extends BroadcastReceiver {
+
+    static public final String ACTION_RESTART_SERVICE = "RestartReceiver.restart";    // 값은 맘대로
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
-        if (intent.getAction().equals(Intent.ACTION_BOOT_COMPLETED)) {
+        if(intent.getAction().equals(ACTION_RESTART_SERVICE)){
             Intent i = new Intent(context, ScreenService.class);
             context.startService(i);
         }

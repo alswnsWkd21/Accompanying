@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="smc.minjoon.accompanying.DaummapActivity">
+    tools:context="smc.minjoon.accompanying.MainMapButton.TmapActivity">
 
     <RelativeLayout
         android:id="@+id/map_view"

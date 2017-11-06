@@ -40,14 +40,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import smc.minjoon.accompanying.AutoRepeatButton;
 import smc.minjoon.accompanying.LockScreen.News.LockItem;
 import smc.minjoon.accompanying.LockScreen.News.LockItemView;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
 import smc.minjoon.accompanying.LockScreen.News.OpenGraph;
 import smc.minjoon.accompanying.LockScreen.News.OpenGraphData;
-import smc.minjoon.accompanying.PopupActivity;
+import smc.minjoon.accompanying.MainSosButton.PopupActivity;
 import smc.minjoon.accompanying.R;
 
 public class LockScreenActivity extends AppCompatActivity {

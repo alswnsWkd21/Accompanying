@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.LockScreen;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

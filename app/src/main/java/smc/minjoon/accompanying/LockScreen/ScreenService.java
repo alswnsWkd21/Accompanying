@@ -9,9 +9,7 @@ import android.content.IntentFilter;
 import android.os.IBinder;
 import android.os.SystemClock;
 
-import smc.minjoon.accompanying.PackageReceiver;
 import smc.minjoon.accompanying.R;
-import smc.minjoon.accompanying.RestartReceiver;
 
 /**
  * Created by skaqn on 2017-10-03.
