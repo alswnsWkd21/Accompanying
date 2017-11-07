@@ -8,16 +8,68 @@
     tools:context="smc.minjoon.accompanying.MainMapButton.TmapActivity">
 
     <RelativeLayout
-        android:id="@+id/map_view"
         android:layout_width="match_parent"
         android:layout_height="450dp"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        tools:layout_editor_absoluteY="8dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map_view"
+            >
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv01"
+        <ImageButton
+            android:id="@+id/imgbtn1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="right|top"
+            android:layout_marginBottom="40dp"
+
+
+            app:srcCompat="@drawable/location2" />
+    </RelativeLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="aaa"
-        android:textSize="30dp"/>
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/maptv01"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="마커를 클릭해 주세요"
+            android:layout_weight="1"
+            android:textSize="30dp"/>
+        <TextView
+            android:id="@+id/maptv02"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="가고싶은 위치를 클릭해주세요"
+            android:layout_weight="1"
+            android:textSize="25dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+        <Button
+            android:id="@+id/mapbtn01"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="전화걸기"
+            android:layout_weight="1"
+            android:textSize="20dp"/>
+            <Button
+                android:id="@+id/mapbtn02"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="길찾기"
+                android:layout_weight="1"
+                android:textSize="20dp"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
