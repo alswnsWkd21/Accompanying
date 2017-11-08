@@ -12,7 +12,15 @@
             android:layout_height="250dp"
             android:src="@drawable/btn_main"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="67dp"
+            />
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/ball"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="75dp"
+            android:id="@+id/ball"
             />
 
 

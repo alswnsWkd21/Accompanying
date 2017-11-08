@@ -14,7 +14,14 @@
             android:id="@+id/btn01"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="글쓰기"
+            android:drawableStart="@drawable/plus"
+            android:drawablePadding="1dip"
+            android:paddingLeft="120dp"
+            android:paddingRight="120dp"
+            android:text="추 가 하 기"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:background="@drawable/bg"
             android:layout_weight="1"/>
 
     </LinearLayout>

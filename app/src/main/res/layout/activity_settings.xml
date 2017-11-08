@@ -1,50 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_weight="1">
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="sos 버튼 설정"
-        android:textSize="30dp"
-        android:id="@+id/setbtn01"
-        android:background="#fff"
+        android:layout_height="200dp"
+        android:background="#40CBC6"
+        android:drawableBottom="@drawable/sosbtn"
+        android:layout_weight="1"
+        android:id="@+id/setbtn01"/>
+
         />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_centerInParent="true"
-        android:background="#35C7F1"/>
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="잠금화면 설정"
-        android:textSize="30dp"
+        android:layout_height="200dp"
+        android:background="#4C9DCC"
+        android:layout_weight="1"
         android:id="@+id/setbtn02"
-        android:background="#fff"
+        android:drawableBottom="@drawable/lockbtn"
+
         />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_centerInParent="true"
-        android:background="#35C7F1"/>
-
-
     <Button
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="보호자 설정"
+        android:layout_height="200dp"
+        android:background="#4B7DB7"
+        android:layout_weight="1"
         android:id="@+id/setbtn03"
-        android:textSize="30dp"
-        android:background="#fff"
-        />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:layout_centerInParent="true"
-        android:background="#35C7F1"/>
+        android:drawableBottom="@drawable/protector"
 
+        />
 
 </LinearLayout>

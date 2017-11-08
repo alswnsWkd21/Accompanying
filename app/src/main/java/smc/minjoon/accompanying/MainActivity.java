@@ -1,10 +1,13 @@
 package smc.minjoon.accompanying;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import smc.minjoon.accompanying.MainMapButton.TmapActivity;
 import smc.minjoon.accompanying.MainSettingButton.SettingsActivity;
@@ -17,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //트윈 애니메이션
+        ImageView iv = (ImageView) findViewById(R.id.ball);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
+        iv.startAnimation(animation);
+
         ImageButton btn01 = (ImageButton ) findViewById(R.id.btn01);
         ImageButton btn02 = (ImageButton ) findViewById(R.id.btn02);
         ImageButton btn03 = (ImageButton ) findViewById(R.id.btn03);

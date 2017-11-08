@@ -40,4 +40,5 @@ dependencies {
     compile 'org.jsoup:jsoup:1.10.3'
     compile 'com.squareup.picasso:picasso:2.5.2'
     testCompile 'junit:junit:4.12'
+    compile 'com.ebanx:swipe-button:0.4.0'
 }

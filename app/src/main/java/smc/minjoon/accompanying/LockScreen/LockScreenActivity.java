@@ -22,6 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.ebanx.swipebtn.OnStateChangeListener;
+import com.ebanx.swipebtn.SwipeButton;
 import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Document;
@@ -42,10 +44,11 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import smc.minjoon.accompanying.LockScreen.News.LockItem;
 import smc.minjoon.accompanying.LockScreen.News.LockItemView;
-import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
-import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
 import smc.minjoon.accompanying.LockScreen.News.OpenGraph;
 import smc.minjoon.accompanying.LockScreen.News.OpenGraphData;
+import smc.minjoon.accompanying.MainActivity;
+import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
+import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
 import smc.minjoon.accompanying.MainSosButton.PopupActivity;
 import smc.minjoon.accompanying.R;
 
@@ -79,6 +82,19 @@ public class LockScreenActivity extends AppCompatActivity {
                 startActivity(i);//그 주소로 간다
             }
         });
+        SwipeButton swipeButton=(SwipeButton)findViewById(R.id.swipe_btn);
+        swipeButton.setOnStateChangeListener(new OnStateChangeListener(){
+            @Override
+            public void onStateChange(boolean active){
+
+               Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(i);
+
+                Toast.makeText(LockScreenActivity.this,"Active:"+active, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         LinearLayout ll = (LinearLayout) findViewById(R.id.layout01);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED|WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         final Vibrator vide = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -93,9 +109,10 @@ public class LockScreenActivity extends AppCompatActivity {
 
         btnsos.setText("sos"); //버튼에 들어갈 텍스트를 지정(String)
         btnsos.setBackgroundColor(Color.RED);
+
         //여기까지!
 
-        ll.addView(btnsos);
+//        ll.addView(btnsos);
 
         btnsos.setOnClickListener(new View.OnClickListener() {
             @Override

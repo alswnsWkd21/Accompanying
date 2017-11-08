@@ -11,9 +11,30 @@
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:id="@+id/listview01">
+        android:id="@+id/listview01"
+        android:layout_weight="1">
 
     </ListView>
-
+    <com.ebanx.swipebtn.SwipeButton
+        android:id="@+id/swipe_btn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="20dp"
+        app:inner_text="S O S"
+        app:inner_text_size="16dp"
+        app:inner_text_color="#8C8C8C"
+        app:inner_text_bottom_padding="18dp"
+        app:inner_text_top_padding="18dp"
+        app:inner_text_background="@drawable/swipe1"
+        app:button_image_disabled="@drawable/notifications_button"
+        app:button_image_enabled="@drawable/notifications"
+        app:button_left_padding="20dp"
+        app:button_right_padding="20dp"
+        app:button_top_padding="18dp"
+        android:layout_weight="6"
+        app:button_bottom_padding="18dp"
+        app:button_background="@drawable/swipe2"/>
 </LinearLayout>
