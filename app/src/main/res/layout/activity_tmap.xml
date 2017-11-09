@@ -41,31 +41,25 @@
             android:id="@+id/maptv01"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-<<<<<<< HEAD
+
             android:drawableLeft="@drawable/location"
             android:text="마커를 클릭해 주세요"
             android:layout_margin="5dp"
             android:textColor="#000"
             android:layout_weight="1"
             android:textSize="25dp"/>
-=======
-            android:text="마커를 클릭해 주세요"
-            android:layout_weight="1"
-            android:textSize="30dp"/>
->>>>>>> 6af0f8709ab76e6cc4fe1df48040d1a614ca9507
+
         <TextView
             android:id="@+id/maptv02"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="가고싶은 위치를 클릭해주세요"
             android:layout_weight="1"
-<<<<<<< HEAD
+
             android:textSize="15dp"
             android:layout_marginLeft="5dp"
             android:textColor="#858585"/>
-=======
-            android:textSize="25dp"/>
->>>>>>> 6af0f8709ab76e6cc4fe1df48040d1a614ca9507
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -76,28 +70,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="전화걸기"
-<<<<<<< HEAD
+
             android:textColor="#fff"
             android:layout_weight="1"
             android:textSize="20dp"
             android:layout_margin="2dp"
             android:background="@drawable/bg"/>
-=======
-            android:layout_weight="1"
-            android:textSize="20dp"/>
->>>>>>> 6af0f8709ab76e6cc4fe1df48040d1a614ca9507
+
             <Button
                 android:id="@+id/mapbtn02"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="길찾기"
-<<<<<<< HEAD
                 android:textColor="#fff"
                 android:layout_margin="2dp"
-
                 android:background="@drawable/bg"
-=======
->>>>>>> 6af0f8709ab76e6cc4fe1df48040d1a614ca9507
                 android:layout_weight="1"
                 android:textSize="20dp"/>
         </LinearLayout>
