@@ -1,18 +1,14 @@
 package smc.minjoon.accompanying.LockScreen;
 
-import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
-import android.telephony.SmsManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -35,8 +31,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -49,7 +43,6 @@ import smc.minjoon.accompanying.LockScreen.News.OpenGraphData;
 import smc.minjoon.accompanying.MainActivity;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
-import smc.minjoon.accompanying.MainSosButton.PopupActivity;
 import smc.minjoon.accompanying.R;
 
 public class LockScreenActivity extends AppCompatActivity {
@@ -59,6 +52,7 @@ public class LockScreenActivity extends AppCompatActivity {
     ListView listview;
     BroadcastReceiver br;
     private ListViewAdapter2 adapter;
+
     private ArrayList<LockItem> data=new ArrayList<LockItem>();// 그 정보들 담아줄 공간
     ArrayList<SingleItem> items = new ArrayList<SingleItem>();
 
@@ -74,7 +68,7 @@ public class LockScreenActivity extends AppCompatActivity {
         listview.setAdapter(adapter); //리스트 뷰에 어뎁터 세팅해라
         items= helper.getResult();
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
                 Intent i=new Intent(); //
                 i.setAction(Intent.ACTION_VIEW);
                 LockItem lockItem =adapter.getItem(position);
@@ -90,8 +84,8 @@ public class LockScreenActivity extends AppCompatActivity {
                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(i);
+                finish();
 
-                Toast.makeText(LockScreenActivity.this,"Active:"+active, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -101,88 +95,12 @@ public class LockScreenActivity extends AppCompatActivity {
 
 
 
-        AutoRepeatButton btnsos = new AutoRepeatButton(LockScreenActivity.this);
-        //여기부터 수정했음
-//        ll.width = WindowManager.LayoutParams.WRAP_CONTENT; //버튼의 너비를 설정(픽셀단위로도 지정가능)
-//        ll.height = WindowManager.LayoutParams.WRAP_CONTENT; //버튼의 높이를 설정(픽셀단위로도 지정 가능)
-//        ll.gravity = Gravity.CENTER; //버튼의 Gravity를 지정
 
-        btnsos.setText("sos"); //버튼에 들어갈 텍스트를 지정(String)
-        btnsos.setBackgroundColor(Color.RED);
-
-        //여기까지!
-
-//        ll.addView(btnsos);
-
-        btnsos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                vide.vibrate(500);
-            }
-        });
-        btnsos.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                vide.vibrate(1000);
-                Intent intent = new Intent(LockScreenActivity.this, PopupActivity.class);
-                intent.putExtra("data", "Test Popup");
-                startActivityForResult(intent, 1);
-                new Timer().schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        if(com.equals("Close")){
-                            cancel();
-                        }else{
-                            for (int i =0; i<items.size(); i++){
-                                sendSMS(items.get(i).getNumber(),items.get(i).getContent());
-                            }
-
-                        }
-                    }
-                },10000);
-                return true;
-            }
-        });
 
 
 
 
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==1){
-            if(resultCode==RESULT_OK){
-                //데이터 받기
-                com = data.getStringExtra("result");
-
-            }
-        }
-    }
-
-
-
-
-    private void sendSMS(String phoneNumber, String message){
-        String SENT = "SMS_SENT";
-        String DELIVERED = "SMS_DELIVERED";
-
-        PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
-        PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
-        br = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                switch(getResultCode()){
-                    case Activity.RESULT_OK:
-                        break;
-                }
-            }
-        };
-        registerReceiver(br, new IntentFilter(SENT));
-        SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
-    }
-
 
     @Override
     protected void onDestroy() {

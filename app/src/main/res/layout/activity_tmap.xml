@@ -46,14 +46,14 @@
             android:layout_margin="5dp"
             android:textColor="#000"
             android:layout_weight="1"
-            android:textSize="30dp"/>
+            android:textSize="25dp"/>
         <TextView
             android:id="@+id/maptv02"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="가고싶은 위치를 클릭해주세요"
             android:layout_weight="1"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_marginLeft="5dp"
             android:textColor="#858585"/>
         <LinearLayout

@@ -2,9 +2,7 @@ package smc.minjoon.accompanying.MainSosButton;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -15,6 +13,7 @@ import android.widget.TextView;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import smc.minjoon.accompanying.MainSosButton.Sos.AlwaysOnTopService;
 import smc.minjoon.accompanying.R;
 
 public class PopupActivity extends Activity {
@@ -40,9 +39,9 @@ public class PopupActivity extends Activity {
             @Override
             public void run() {
                 if(datanum != 1) {
-                    Intent intent = new Intent();
+                    Intent intent = new Intent(getApplicationContext(), AlwaysOnTopService.class);
                     intent.putExtra("result", "이런");
-                    setResult(RESULT_OK, intent);
+                    startService(intent);
                     finish();
                 }
             }
@@ -52,9 +51,9 @@ public class PopupActivity extends Activity {
     //확인 버튼 클릭
     public void mOnClose(View v) {
         //데이터 전달하기
-        Intent intent = new Intent();
+        Intent intent = new Intent(getApplicationContext(), AlwaysOnTopService.class);
         intent.putExtra("result", "Close");
-        setResult(RESULT_OK, intent);
+        startService(intent);
         datanum =1;
         //액티비티(팝업) 닫기
         finish();

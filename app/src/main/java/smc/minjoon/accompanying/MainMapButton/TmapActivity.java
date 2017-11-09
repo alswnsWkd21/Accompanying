@@ -12,27 +12,25 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.skp.Tmap.TMapAddressInfo;
 import com.skp.Tmap.TMapData;
 import com.skp.Tmap.TMapMarkerItem;
 import com.skp.Tmap.TMapPOIItem;
 import com.skp.Tmap.TMapPoint;
 import com.skp.Tmap.TMapPolyLine;
 import com.skp.Tmap.TMapView;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -221,7 +219,7 @@ public class TmapActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            Toast.makeText(TmapActivity.this, "꺼짐",Toast.LENGTH_SHORT).show();
+
         }
     }
 

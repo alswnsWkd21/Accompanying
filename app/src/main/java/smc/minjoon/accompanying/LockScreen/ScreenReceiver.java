@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
-import smc.minjoon.accompanying.LockScreen.LockScreenActivity;
-
 /**
  * Created by skaqn on 2017-10-03.
  */
@@ -43,6 +41,7 @@ public class ScreenReceiver extends BroadcastReceiver {
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 context.startActivity(i);
+
             }
         }
     }
