@@ -63,7 +63,7 @@ public class ContentActivity extends AppCompatActivity {
         });
         btn03.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {//목록버튼 눌럿을 때 그냥 이창을 종료하면 Main화면으로 간다.
+            public void onClick(View v) {//목록버튼 눌럿을 때 그냥 이창을 종료하면 Main화면으로 간다.ㅎ
 //               Intent intent =new Intent(getApplicationContext(), MainActivity.class);
 
                 finish();
