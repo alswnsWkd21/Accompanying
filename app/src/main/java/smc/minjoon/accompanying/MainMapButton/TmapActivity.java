@@ -20,17 +20,30 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+<<<<<<< HEAD
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+=======
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.skp.Tmap.TMapAddressInfo;
+>>>>>>> 6af0f8709ab76e6cc4fe1df48040d1a614ca9507
 import com.skp.Tmap.TMapData;
 import com.skp.Tmap.TMapMarkerItem;
 import com.skp.Tmap.TMapPOIItem;
 import com.skp.Tmap.TMapPoint;
 import com.skp.Tmap.TMapPolyLine;
 import com.skp.Tmap.TMapView;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6af0f8709ab76e6cc4fe1df48040d1a614ca9507
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
