@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import smc.minjoon.accompanying.MainActivity;
+import smc.minjoon.accompanying.Login.MainActivity;
 import smc.minjoon.accompanying.R;
 
 public class NoteeditActivity extends AppCompatActivity {

@@ -31,7 +31,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Login.MainActivity" />
         <service android:name=".MainSosButton.Sos.AlwaysOnTopService" />
         <activity android:name=".LockScreen.LockScreenActivity" />
         <service android:name=".LockScreen.ScreenService" />
@@ -70,5 +70,18 @@
         <activity android:name=".MainSettingButton.SettingsosActivity" />
         <activity android:name=".MainSettingButton.SettinglockActivity" />
         <activity android:name=".MainMapButton.TmapActivity" />
+        <activity android:name=".Login.AbledMainActivity"></activity>
+        <activity android:name=".Login.DisabledLoginActivity"></activity>
+        <activity android:name=".Login.DisabledMainActivity"></activity>
+        <activity android:name=".Login.SelectiveActivity"></activity>
+        <activity android:name=".Login.DisabledRegisterActivity"></activity>
+        <activity android:name=".Login.LoginActivity"></activity>
+        <activity android:name=".Login.PrivacyActivity"></activity>
+        <activity android:name=".Login.RegisterActivity"></activity>
+        <activity android:name=".Login.ServiceActivity"></activity>
+
+
+
+
     </application>
 </manifest>

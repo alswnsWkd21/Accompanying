@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying;
+package smc.minjoon.accompanying.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import smc.minjoon.accompanying.MainMapButton.TmapActivity;
 import smc.minjoon.accompanying.MainSettingButton.SettingsActivity;
 import smc.minjoon.accompanying.MainSosButton.InformSos;
+import smc.minjoon.accompanying.R;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG = "permissionstatus";

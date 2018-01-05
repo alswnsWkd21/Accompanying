@@ -40,7 +40,7 @@ import smc.minjoon.accompanying.LockScreen.News.LockItem;
 import smc.minjoon.accompanying.LockScreen.News.LockItemView;
 import smc.minjoon.accompanying.LockScreen.News.OpenGraph;
 import smc.minjoon.accompanying.LockScreen.News.OpenGraphData;
-import smc.minjoon.accompanying.MainActivity;
+import smc.minjoon.accompanying.Login.MainActivity;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
 import smc.minjoon.accompanying.R;

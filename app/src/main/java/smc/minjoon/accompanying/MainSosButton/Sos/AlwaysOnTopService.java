@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import smc.minjoon.accompanying.MainActivity;
+import smc.minjoon.accompanying.Login.MainActivity;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
 import smc.minjoon.accompanying.MainSosButton.PopupActivity;
