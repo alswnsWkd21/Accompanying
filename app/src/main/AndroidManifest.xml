@@ -70,7 +70,6 @@
         <activity android:name=".MainSettingButton.SettingsosActivity" />
         <activity android:name=".MainSettingButton.SettinglockActivity" />
         <activity android:name=".MainMapButton.TmapActivity" />
-        <activity android:name=".Login.AbledMainActivity"></activity>
         <activity android:name=".Login.DisabledLoginActivity"></activity>
         <activity android:name=".Login.DisabledMainActivity"></activity>
         <activity android:name=".Login.SelectiveActivity"></activity>
@@ -80,6 +79,14 @@
         <activity android:name=".Login.RegisterActivity"></activity>
         <activity android:name=".Login.ServiceActivity"></activity>
 
+        <service
+            android:name=".Login.MyFirebaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
 
 
 

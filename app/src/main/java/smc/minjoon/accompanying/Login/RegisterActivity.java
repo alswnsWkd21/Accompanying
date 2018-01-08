@@ -12,6 +12,8 @@ import android.widget.EditText;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -118,6 +120,8 @@ public class RegisterActivity extends AppCompatActivity {
                 final String userPassword = passwordText.getText().toString();
                 final String userName = nameText.getText().toString();
                 final String userPhone = phoneText.getText().toString();
+                FirebaseMessaging.getInstance().subscribeToTopic("news");
+                final String userToken = FirebaseInstanceId.getInstance().getToken();
 
                 if(!validate){
                     AlertDialog.Builder builder=new AlertDialog.Builder(RegisterActivity.this);
@@ -164,7 +168,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
 
                 };
-                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userName, userPhone, responseListener);
+                RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, userName, userPhone,userToken, responseListener );
                 RequestQueue queue= Volley.newRequestQueue(RegisterActivity.this);
                 queue.add(registerRequest);
             }

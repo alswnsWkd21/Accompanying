@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "267900951392",
+    "firebase_url": "https://accompanying-fd806.firebaseio.com",
+    "project_id": "accompanying-fd806",
+    "storage_bucket": "accompanying-fd806.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267900951392:android:151c749c5c14fa75",
+        "android_client_info": {
+          "package_name": "smc.minjoon.accompanying"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267900951392-oi85sq8rvsgvn3dakqcuf43eaeipjbdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHfZEF7VirV6T7pWAoE0SsdTTqZlCNe9c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
