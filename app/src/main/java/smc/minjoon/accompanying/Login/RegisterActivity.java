@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -122,6 +123,8 @@ public class RegisterActivity extends AppCompatActivity {
                 final String userPhone = phoneText.getText().toString();
                 FirebaseMessaging.getInstance().subscribeToTopic("news");
                 final String userToken = FirebaseInstanceId.getInstance().getToken();
+                Log.v("test", userToken);
+
 
                 if(!validate){
                     AlertDialog.Builder builder=new AlertDialog.Builder(RegisterActivity.this);
@@ -146,6 +149,7 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                                 JSONObject jsonResponse = new JSONObject(response);
                                 boolean success = jsonResponse.getBoolean("success");
+
                                 if (success) {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setMessage("회원 등록에 성공했습니다.")
