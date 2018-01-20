@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="smc.minjoon.accompanying">
 
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="smc.minjoon.accompanying">
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.READ_OWNER_DATA"/>
-    <uses-permission android:name="android.permission.WRITE_OWNER_DATA"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+    <uses-permission android:name="android.permission.WRITE_OWNER_DATA" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.DIAL_PHONE" />
 
@@ -28,13 +28,18 @@
         <activity android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".Login.MainActivity" />
+
         <service android:name=".MainSosButton.Sos.AlwaysOnTopService" />
+
         <activity android:name=".LockScreen.LockScreenActivity" />
+
         <service android:name=".LockScreen.ScreenService" />
+
         <receiver android:name=".LockScreen.ScreenReceiver" />
         <receiver
             android:name=".LockScreen.RestartReceiver"
@@ -56,9 +61,11 @@
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
                 <action android:name="android.intent.action.PACKAGE_REPLACED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".MainSosButton.PopupActivity"
             android:theme="@android:style/Theme.Dialog" />
@@ -70,14 +77,14 @@
         <activity android:name=".MainSettingButton.SettingsosActivity" />
         <activity android:name=".MainSettingButton.SettinglockActivity" />
         <activity android:name=".MainMapButton.TmapActivity" />
-        <activity android:name=".Login.DisabledLoginActivity"></activity>
-        <activity android:name=".Login.DisabledMainActivity"></activity>
-        <activity android:name=".Login.SelectiveActivity"></activity>
-        <activity android:name=".Login.DisabledRegisterActivity"></activity>
-        <activity android:name=".Login.LoginActivity"></activity>
-        <activity android:name=".Login.PrivacyActivity"></activity>
-        <activity android:name=".Login.RegisterActivity"></activity>
-        <activity android:name=".Login.ServiceActivity"></activity>
+        <activity android:name=".Login.DisabledLoginActivity" />
+        <activity android:name=".Login.AbledMainActivity" />
+        <activity android:name=".Login.SelectiveActivity" />
+        <activity android:name=".Login.DisabledRegisterActivity" />
+        <activity android:name=".Login.LoginActivity" />
+        <activity android:name=".Login.PrivacyActivity" />
+        <activity android:name=".Login.RegisterActivity" />
+        <activity android:name=".Login.ServiceActivity" />
 
         <service
             android:name=".Login.MyFirebaseMessagingService"
@@ -87,8 +94,32 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+        <service
+            android:name=".Login.MyFirebaseInstanceIDService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
 
+        <activity android:name=".MainAccompanyButton.Reservation.AccompanyActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.AccompanySelectActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.ListActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.ListClickedActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.ReservationActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.AccompanyLoadingActivity" />
 
+        <service
+            android:name=".MainAccompanyButton.Reservation.LocationReceiverService"
+            android:enabled="true"
+            android:exported="true" />
 
+        <activity
+            android:name=".MainAccompanyButton.Reservation.AccompanyPopupActivity"
+            android:label="@string/title_activity_accompany_popup"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".MainAccompanyButton.Reservation.Chatting.ChattingActivity"></activity>
     </application>
+
 </manifest>

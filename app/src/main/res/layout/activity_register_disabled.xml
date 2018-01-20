@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sinabro.test.LoginActivity"
+    tools:context="smc.minjoon.accompanying.Login.LoginActivity"
     android:background="#fff">
     <LinearLayout
         android:layout_width="match_parent"

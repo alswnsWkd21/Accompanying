@@ -23,6 +23,10 @@ public class SelectiveActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent helperIntent=new Intent(SelectiveActivity.this,LoginActivity.class);
+                helperIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+// Add new Flag to start new Activity
+                helperIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+// Staring Login Activity
                 SelectiveActivity.this.startActivity(helperIntent);
             }
         });
@@ -31,6 +35,10 @@ public class SelectiveActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent disabledIntent=new Intent(SelectiveActivity.this,DisabledLoginActivity.class);
+                disabledIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+// Add new Flag to start new Activity
+                disabledIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+// Staring Login Activity
                 SelectiveActivity.this.startActivity(disabledIntent);
             }
         });

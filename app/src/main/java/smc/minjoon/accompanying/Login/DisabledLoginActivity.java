@@ -1,5 +1,6 @@
 package smc.minjoon.accompanying.Login;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -30,6 +31,38 @@ public class DisabledLoginActivity extends AppCompatActivity {
 
         final Button loginBtn=(Button)findViewById(R.id.loginBtn);
         final TextView registerBtn=(TextView)findViewById(R.id.registerBtn);
+        final SessionManager sessionmanager = new SessionManager(DisabledLoginActivity.this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(DisabledLoginActivity.this);
+
+//        sessionmanager.checkLogin("user","user");
+        if(sessionmanager.getKeyKind() !=null && !sessionmanager.getKeyKind().equals("")){
+            if(sessionmanager.getKeyKind().equals("user") && sessionmanager.isLoggedIn()){
+                Intent i = new Intent(DisabledLoginActivity.this, MainActivity.class);
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+// Add new Flag to start new Activity
+
+// Staring Login Activity
+                startActivity(i);
+            }else{
+                if(sessionmanager.getKeyKind().equals("helper") && sessionmanager.isLoggedIn()){
+                    alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            sessionmanager.logoutUser();
+                            dialog.dismiss();     //닫기
+                        }
+                    });
+                    alert.setMessage("이미 도우미로 로그인되어있어 도우미가 로그아웃됩니다.");
+                    alert.setCancelable(false);
+                    alert.show();
+
+
+                }
+            }
+        }
+
+
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,10 +87,21 @@ public class DisabledLoginActivity extends AppCompatActivity {
                             boolean success=jsonResponse.getBoolean("success");
                             if(success){
                                 String userID=jsonResponse.getString("userID");
-                                String userPassword=jsonResponse.getString("userPassword");
+                                String userName=jsonResponse.getString("userName");
+                                String userToken=jsonResponse.getString("userToken");
+                                String userPhone=jsonResponse.getString("userPhone");
+//                                세션매니저 로직 변경으로 인한 create대신 login
+                                sessionmanager.editor.putString("name", userName);
+                                sessionmanager.editor.putString("id", userID);
+                                sessionmanager.editor.putString("kind", "user");
+                                sessionmanager.editor.putBoolean("IsLoggedIn", true);
+                                sessionmanager.editor.putString("phone",userPhone );
+                                sessionmanager.editor.commit();
                                 Intent intent=new Intent(DisabledLoginActivity.this,MainActivity.class);
-                                intent.putExtra("userID",userID);
-                                intent.putExtra("userPassword", userPassword);
+//                              intent.putExtra("userID",userID);
+//                              intent.putExtra("userPassword", userPassword);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 DisabledLoginActivity.this.startActivity(intent);
                             }else{
                                 AlertDialog.Builder builder=new AlertDialog.Builder(DisabledLoginActivity.this);
@@ -69,7 +113,6 @@ public class DisabledLoginActivity extends AppCompatActivity {
                         }catch(Exception e){
                             e.printStackTrace();
                         }
-
                     }
                 };
                 DisabledLoginRequest disabledloginRequest=new DisabledLoginRequest(userID, userPassword, responseListener);

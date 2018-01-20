@@ -15,15 +15,20 @@ public class LoginRequest extends StringRequest {
     final static private String URL ="http://syoung1394.cafe24.com/HelperLogin.php";
     private Map<String, String> parameters;
 
-    public LoginRequest(String userID, String userPassword,Response.Listener<String> listener){
+    public LoginRequest(String helperID, String helperPassword,Response.Listener<String> listener){
         super(Method.POST, URL, listener, null);
         parameters=new HashMap<>();
-        parameters.put("userID", userID);
-        parameters.put("userPassword", userPassword);
+        parameters.put("helperID", helperID);
+        parameters.put("helperPassword", helperPassword);
 
     }
+
+
+
     @Override
     public Map<String, String> getParams(){
         return parameters;
     }
 }
+
+

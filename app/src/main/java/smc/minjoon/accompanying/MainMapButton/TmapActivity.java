@@ -1,6 +1,7 @@
 package smc.minjoon.accompanying.MainMapButton;
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -13,18 +14,15 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.skp.Tmap.TMapData;
 import com.skp.Tmap.TMapMarkerItem;
@@ -32,6 +30,7 @@ import com.skp.Tmap.TMapPOIItem;
 import com.skp.Tmap.TMapPoint;
 import com.skp.Tmap.TMapPolyLine;
 import com.skp.Tmap.TMapView;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -68,25 +67,26 @@ public class TmapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tmap);
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        boolean isGrantStorage = grantExternalStoragePermission();
+        grantExternalStoragePermission();
         tv01 = (TextView) findViewById(R.id.maptv01);
         tv02 = (TextView) findViewById(R.id.maptv02);
         mapbtn01 = (Button) findViewById(R.id.mapbtn01);
         mapbtn02 = (Button) findViewById(R.id.mapbtn02);
         imgbtn01 = (ImageButton) findViewById(R.id.imgbtn1);
         final TMapData tmapdata = new TMapData();
-        if (isGrantStorage) {
-// 일반처리.   // MapView 객체생성 및 API Key 설정
-            Toast.makeText(this, "권한을 허락하셨습니다.", Toast.LENGTH_SHORT).show();
-            tmapview = new TMapView(TmapActivity.this);
-            tmapview.setSKPMapApiKey("60842859-875b-31b3-8fa1-944bcfd3d2d6");
-            LinearLayout mapViewContainer = (LinearLayout) findViewById(R.id.map_view);
-            mapViewContainer.addView(tmapview);
-            LocationManager lm = (LocationManager)getSystemService(Context. LOCATION_SERVICE);
-            lm.removeUpdates( mLocationListener );    // Stop the update if it is in progress.
-            lm.requestLocationUpdates( LocationManager.GPS_PROVIDER , 100, 1, mLocationListener );
-            lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, mLocationListener);
-        }
+        tmapview = new TMapView(TmapActivity.this);
+        tmapview.setSKPMapApiKey("60842859-875b-31b3-8fa1-944bcfd3d2d6");
+        LinearLayout mapViewContainer = (LinearLayout) findViewById(R.id.map_view);
+        mapViewContainer.addView(tmapview);
+//        if (isGrantStorage) {
+//// 일반처리.   // MapView 객체생성 및 API Key 설정
+//            Toast.makeText(this, "권한을 허락하셨습니다.", Toast.LENGTH_SHORT).show();
+//            lm.removeUpdates( mLocationListener );    // Stop the update if it is in progress.
+//            lm.requestLocationUpdates( LocationManager.GPS_PROVIDER , 100, 1, mLocationListener );
+//            lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, mLocationListener);
+//        }
+
+
         imgbtn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +182,6 @@ public class TmapActivity extends AppCompatActivity {
             try{
                 URL url  = new URL(params[0]);
                 InputStream is = url.openStream();
-
                 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder builder = factory.newDocumentBuilder();
                 Document doc = builder.parse(is);
@@ -226,47 +225,39 @@ public class TmapActivity extends AppCompatActivity {
 
 
 
-
-
-    private boolean grantExternalStoragePermission() {
+    private void grantExternalStoragePermission() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if ((checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) && (checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
-                Log.v(TAG, "Permission is granted");
+            if((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)){
                 lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, mLocationListener);
                 lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1,mLocationListener);
-                return true;
+            }
+            if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+                    && (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) == PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED)) {
+
                 //만약 두개의 퍼미션이 전부 허락되어있다면 true반환
             } else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                //만약 두개의 퍼미션이 전부 안되어 있다면 요청
-                return false;
+                AlertDialog.Builder alert = new AlertDialog.Builder(TmapActivity.this);
+                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialo, int which) {
+                        ActivityCompat.requestPermissions(TmapActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CALL_PHONE}, 1);
+                        dialo.dismiss();     //닫기
+                    }
+                });
+                alert.setMessage("도움길 기능을 효율적으로 사용하기 위해서 몇 가지의 권한이 필요합니다 \n\n" +
+                        "위치정보:  현재의 위치를 위해 위치정보가 필요합니다 \n\n"+
+                        "PHONE:   시설에 전화를 연결하기 위해 필요합니다.");
+                alert.setCancelable(false);
+                alert.show();
             }
         } else {
-            Toast.makeText(this, "External Storage Permission is Grant", Toast.LENGTH_SHORT).show();
-            Log.d(TAG, "External Storage Permission is Grant ");
+//            Toast.makeText(this, "External Storage Permission is Grant", Toast.LENGTH_SHORT).show();
+//            Log.d(TAG, "External Storage Permission is Grant ");
             lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 1, mLocationListener);
             lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,1,mLocationListener);
-            return true;
+
         }
     }
-
-
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
-                finish();
-                startActivity(new Intent(this, TmapActivity.class));
-            } else {
-                Toast.makeText(this, "access fine권한을 거절하셨습니다. 도움길서비스에 제약이 있습니다.", Toast.LENGTH_LONG).show();
-            }
-        }
-    }
-
 
 
 
