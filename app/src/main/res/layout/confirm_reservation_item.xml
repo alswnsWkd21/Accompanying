@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/remove"
+            android:text="취소하기"/>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id="@+id/chating"
+            android:text="채팅하기"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reservationID"
+            android:visibility="gone"
+            android:text="아이디"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reservationDate"
+            android:text="날짜"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reservationTime"
+            android:text="시간"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reservationPlace"
+            android:text="장소"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reservationWork"
+            android:singleLine="true"
+            android:text="할일"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/h_id"
+            android:text="상태"/>
+</LinearLayout>
+
+
+
+</LinearLayout>

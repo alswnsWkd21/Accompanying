@@ -17,11 +17,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -40,7 +42,7 @@ import java.net.URL;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.ListActivity;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.LocationReceiverService;
 import smc.minjoon.accompanying.MainMapButton.TmapActivity;
-import smc.minjoon.accompanying.MainSettingButton.SettingsActivity;
+import smc.minjoon.accompanying.MainSettingButton.HelperSettingsActivity;
 import smc.minjoon.accompanying.MainSosButton.InformSos;
 import smc.minjoon.accompanying.R;
 
@@ -59,17 +61,51 @@ public class AbledMainActivity extends AppCompatActivity {
         ImageView iv = (ImageView) findViewById(R.id.ball);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
         iv.startAnimation(animation);
-        ImageButton logoutBtn = (ImageButton) findViewById(R.id.logoutBtn);
+
         ImageView mainbtn=(ImageView)findViewById(R.id.mainBtn);
         ImageButton btn01 = (ImageButton ) findViewById(R.id.btn01);
         ImageButton btn02 = (ImageButton ) findViewById(R.id.btn02);
         ImageButton btn03 = (ImageButton ) findViewById(R.id.btn03);
+        final SessionManager sessionmanager = new SessionManager(AbledMainActivity.this);
+        sessionmanager.checkLogin("helper","helper");
+        //햄버거 버튼
+        final ImageButton hamburger=(ImageButton)findViewById(R.id.hamburger);
+
+
+        hamburger.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(AbledMainActivity.this, hamburger);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        String a =String.valueOf(item);
+                        if(a.equals("도움말")){
+
+                            Intent i = new Intent(AbledMainActivity.this, InformSos.class);
+                            startActivity(i);
+                        }
+                        if(a.equals("로그아웃")){
+                            sessionmanager.logoutUser();
+                        }
+                        return true;
+                    }
+                });
+                popup.show();
+            }
+        });//closing the setOnClickListener method
+
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         grantExternalStoragePermission();
         Intent location = new Intent(AbledMainActivity.this, LocationReceiverService.class);
         startService(location);
-       final SessionManager sessionmanager = new SessionManager(AbledMainActivity.this);
-        sessionmanager.checkLogin("helper","helper");
+
+
 
             if(sessionmanager.getKeyOk().equals("refresh")){
                 String id =sessionmanager.getKeyId();
@@ -101,12 +137,7 @@ public class AbledMainActivity extends AppCompatActivity {
             }
 
 
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sessionmanager.logoutUser();
-            }
-        });
+
         mainbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -116,6 +147,16 @@ public class AbledMainActivity extends AppCompatActivity {
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final AlertDialog.Builder builder = new AlertDialog.Builder(AbledMainActivity.this);
+                builder.setMessage("현재 서비스를 위해 개발 중입니다.")
+                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                               dialog.dismiss();
+                            }
+                        })
+                        .create()
+                        .show();
                 Intent i = new Intent(AbledMainActivity.this, TmapActivity.class);
                 startActivity(i);
             }
@@ -123,14 +164,14 @@ public class AbledMainActivity extends AppCompatActivity {
         btn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AbledMainActivity.this, InformSos.class);
+                Intent i = new Intent(AbledMainActivity.this, ListActivity.class);
                 startActivity(i);
             }
         });
         btn03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AbledMainActivity.this, SettingsActivity.class);
+                Intent i = new Intent(AbledMainActivity.this, HelperSettingsActivity.class);
                 startActivity(i);
             }
         });

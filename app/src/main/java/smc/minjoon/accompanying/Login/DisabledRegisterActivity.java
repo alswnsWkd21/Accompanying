@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,6 +18,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.regex.Pattern;
 
 import smc.minjoon.accompanying.R;
 
@@ -60,7 +63,7 @@ public class DisabledRegisterActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view){
-                String userID=idText.getText().toString();
+                final String userID=idText.getText().toString();
                 if(validate)
                 {
                     return;
@@ -80,6 +83,12 @@ public class DisabledRegisterActivity extends AppCompatActivity {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
                             if (success) {
+                                if(!Pattern.matches("^(?=.*[a-zA-Z]).{6,20}$", userID))
+                                {
+                                    Toast.makeText(DisabledRegisterActivity.this,"아이디 형식을 지켜주세요.",Toast.LENGTH_SHORT).show();
+                                    dialog.dismiss();
+                                    return;
+                                }
                                 AlertDialog.Builder builder = new AlertDialog.Builder(DisabledRegisterActivity.this);
                                 dialog=builder.setMessage("사용할 수 있는 아이디입니다")
                                         .setPositiveButton("확인", null)
@@ -133,6 +142,21 @@ public class DisabledRegisterActivity extends AppCompatActivity {
                             .setNegativeButton("확인", null)
                             .create();
                     dialog.show();
+                    return;
+                }
+                //핸드폰번호 유효성
+                if(!Pattern.matches("^01(?:0|1|[6-9])(?:\\d{3}|\\d{4})\\d{4}$", userPhone))
+                {
+                    Toast.makeText(DisabledRegisterActivity.this,"올바른 핸드폰 번호가 아닙니다.",Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    return;
+                }
+
+                //비밀번호 유효성
+                if(!Pattern.matches("^(?=.*\\d)(?=.*[~`!@#$%\\^&*()-])(?=.*[a-zA-Z]).{8,20}$", userPassword))
+                {
+                    Toast.makeText(DisabledRegisterActivity.this,"비밀번호 형식을 지켜주세요.",Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                     return;
                 }
                 Response.Listener<String> responseListener = new Response.Listener<String>() {

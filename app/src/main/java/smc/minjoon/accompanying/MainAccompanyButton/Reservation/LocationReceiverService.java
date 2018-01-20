@@ -72,10 +72,10 @@ public class LocationReceiverService extends Service {
                                     boolean success = jsonResponse.getBoolean("success");
 
                                     if (success) {
-                                        Log.v("location", "성공");
-                                        Log.v("location2", sessionmanager.getKeyId());
-                                        Log.v("location3", String.valueOf(latitude));
-                                        Log.v("location4", String.valueOf(longitude));
+//                                        Log.v("location", "성공");
+//                                        Log.v("location2", sessionmanager.getKeyId());
+//                                        Log.v("location3", String.valueOf(latitude));
+//                                        Log.v("location4", String.valueOf(longitude));
                                     } else {
 //                                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
 //                                        builder.setMessage("회원 등록에 실패했습니다.")

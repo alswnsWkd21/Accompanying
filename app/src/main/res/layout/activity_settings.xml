@@ -8,11 +8,11 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#40CBC6"
-        android:drawableBottom="@drawable/sosbtn"
+        android:drawableBottom="@drawable/lockbtn"
         android:layout_weight="1"
         android:id="@+id/setbtn01"/>
 
-        />
+    />
 
     <Button
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
         android:background="#4C9DCC"
         android:layout_weight="1"
         android:id="@+id/setbtn02"
-        android:drawableBottom="@drawable/lockbtn"
+        android:drawableBottom="@drawable/protector"
 
         />
     <Button
@@ -29,7 +29,7 @@
         android:background="#4B7DB7"
         android:layout_weight="1"
         android:id="@+id/setbtn03"
-        android:drawableBottom="@drawable/protector"
+        android:drawableBottom="@drawable/mypage"
 
         />
 

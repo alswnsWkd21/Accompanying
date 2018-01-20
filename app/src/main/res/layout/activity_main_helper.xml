@@ -3,8 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
+    android:background="#fff"
     android:layout_height="match_parent">
-
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/hamburger"
+            android:layout_margin="10dp"
+            android:id="@+id/hamburger"
+            android:background="#fff"/>
         <ImageView
             android:id="@+id/mainBtn"
             android:layout_width="250dp"
@@ -21,12 +28,7 @@
             android:layout_marginTop="75dp"
             android:id="@+id/ball"
             />
-        <ImageButton
-            android:layout_marginLeft="300dp"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
-            android:id="@+id/logoutBtn"
-            />
+
 
 
         <LinearLayout

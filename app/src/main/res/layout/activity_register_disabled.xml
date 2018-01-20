@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="smc.minjoon.accompanying.Login.LoginActivity"
     android:background="#fff">
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,7 +68,12 @@
             android:textSize="15dp"
             android:textStyle="bold"
             android:layout_marginTop="30dp"/>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:text="*아이디는 영어와 숫자를 포함하여 6-20자로 입력해주세요"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -98,7 +102,12 @@
                 android:background="@drawable/bg"
                 android:id="@+id/validateBtn"/>
         </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:text="*비밀번호는 영어, 숫자, 기호를 포함하여 8-20자로 입력해주세요"/>
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -114,8 +123,10 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:inputType="textPassword"
             android:id="@+id/passwordText" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -133,6 +144,12 @@
             android:layout_height="50dp"
             android:id="@+id/nameText" />
     </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:text="*핸드폰번호는 -없이 입력해주세요"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"

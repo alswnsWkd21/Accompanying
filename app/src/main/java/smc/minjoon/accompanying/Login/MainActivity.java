@@ -11,11 +11,13 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,12 +30,13 @@ import smc.minjoon.accompanying.MainAccompanyButton.Reservation.AccompanySelectA
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.LocationReceiverService;
 import smc.minjoon.accompanying.MainMapButton.TmapActivity;
 import smc.minjoon.accompanying.MainSettingButton.SettingsActivity;
+import smc.minjoon.accompanying.MainSettingButton.SettingsosActivity;
 import smc.minjoon.accompanying.MainSosButton.InformSos;
 import smc.minjoon.accompanying.R;
 
 public class MainActivity extends AppCompatActivity {
     private String TAG = "permissionstatus";
-
+    ImageButton hamburger;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,16 +50,52 @@ public class MainActivity extends AppCompatActivity {
         ImageView iv = (ImageView) findViewById(R.id.ball);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
         iv.startAnimation(animation);
-        ImageButton logoutBtn = (ImageButton) findViewById(R.id.logoutBtn);
+
         ImageButton btn01 = (ImageButton ) findViewById(R.id.btn01);
         ImageButton btn02 = (ImageButton ) findViewById(R.id.btn02);
         ImageButton btn03 = (ImageButton ) findViewById(R.id.btn03);
+        final SessionManager sessionmanager = new SessionManager(MainActivity.this);
+        sessionmanager.checkLogin("user","user");
+        //햄버거 버튼
+         hamburger=(ImageButton)findViewById(R.id.hamburger);
+
+
+
+        hamburger.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                //Creating the instance of PopupMenu
+                PopupMenu popup = new PopupMenu(MainActivity.this, hamburger);
+                //Inflating the Popup using xml file
+                popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
+                //registering popup with OnMenuItemClickListener
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+
+                        String a =String.valueOf(item);
+                        if(a.equals("도움말")){
+
+
+                            Intent i = new Intent(MainActivity.this, InformSos.class);
+                            startActivity(i);
+                        }
+                        if(a.equals("로그아웃")){
+                            sessionmanager.logoutUser();
+                        }
+                        return true;
+                    }
+                });
+                popup.show();
+            }
+        });//closing the setOnClickListener method
+
 
         grantExternalStoragePermission();
         Intent location = new Intent(MainActivity.this, LocationReceiverService.class);
         startService(location);
-        final SessionManager sessionmanager = new SessionManager(MainActivity.this);
-        sessionmanager.checkLogin("user","user");
+
 
 
         if(sessionmanager.getKeyOk().equals("refresh")){
@@ -87,12 +126,7 @@ public class MainActivity extends AppCompatActivity {
             queue.add(sessionRequest1);
 
         }
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            sessionmanager.logoutUser();
-            }
-        });
+
         ivbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
         btn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, InformSos.class);
+                Intent i = new Intent(MainActivity.this, SettingsosActivity.class);
                 startActivity(i);
             }
         });

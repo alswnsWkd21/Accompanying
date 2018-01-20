@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/intro_help"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:id="@+id/help"
+    >
+    <!-- 닫기 버튼 -->
+
+        <Button
+            android:text="X"
+            android:textSize="30dp"
+            android:background="#00000000"
+            android:layout_gravity="right"
+            android:layout_margin="10dp"
+            android:textColor="#fff"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:onClick="mOnClose"
+            android:id="@+id/button" />
+    <!--// 닫기 버튼 -->
+</LinearLayout>

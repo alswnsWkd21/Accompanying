@@ -27,6 +27,7 @@
             android:layout_margin="10dp"
             android:hint="  비밀번호"
             android:background="#fff"
+            android:inputType="textPassword"
             android:id="@+id/passwordText" />
 
     <Button

@@ -4,58 +4,74 @@ android:orientation="vertical" android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="#fff"
 android:weightSum="1"
-android:layout_gravity="center">
+android:layout_gravity="center"
+    >
 
 <ImageView
-    android:layout_width="250dp"
-    android:layout_height="200dp"
-    android:src="@drawable/hand"
+    android:layout_width="300dp"
+    android:layout_height="100dp"
+    android:src="@drawable/add_contact"
+    android:layout_margin="30dp"
     android:layout_gravity="center"/>
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical">
 <EditText
     android:id="@+id/et01"
-    android:layout_width="360dp"
-    android:layout_height="37dp"
-    android:hint="이름"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
     android:padding="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:hint="이름"
+    android:textSize="15dp"
     android:background="@drawable/textview"
-    android:layout_margin="5dp"
     android:layout_gravity="center"
-    android:layout_weight="0.16" />
+   />
 
 <EditText
     android:id="@+id/et03"
-    android:layout_width="360dp"
-    android:layout_height="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
     android:hint="연락처"
-    android:layout_margin="5dp"
+    android:textSize="15dp"
     android:padding="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
     android:background="@drawable/textview"
     android:layout_gravity="center"/>
 
 <EditText
     android:id="@+id/et02"
-    android:layout_width="360dp"
-    android:layout_height="80dp"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
     android:hint="문자 내용"
+    android:textSize="15dp"
     android:padding="10dp"
-    android:layout_margin="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
     android:background="@drawable/textview"
     android:layout_gravity="center"
     />
+</LinearLayout>
 
-<ImageButton
+<Button
     android:layout_width="370dp"
     android:layout_height="50dp"
     android:layout_marginTop="10dp"
     android:id="@+id/btn01"
-    android:src="@drawable/btn_add"
-    android:layout_gravity="center"/>
-<ImageButton
-    android:layout_width="370dp"
-    android:layout_height="50dp"
-    android:layout_marginTop="10dp"
-    android:id="@+id/btn02"
-    android:src="@drawable/btn_close"
-    android:layout_gravity="center"/>
+    android:background="@drawable/newbg_06"
+    android:layout_gravity="center"
+    android:text="+ 추가하기"
+    android:layout_margin="20dp"
+    android:textSize="20dp"
+    android:textColor="#fff"
+    android:textAlignment="center"
+    android:gravity="center"/>
+
 </LinearLayout>

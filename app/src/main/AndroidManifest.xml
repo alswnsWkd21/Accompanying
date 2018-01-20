@@ -120,6 +120,7 @@
             android:label="@string/title_activity_accompany_popup"
             android:theme="@style/AppTheme" />
         <activity android:name=".MainAccompanyButton.Reservation.Chatting.ChattingActivity"></activity>
+        <activity android:name=".MainSettingButton.MypageActivity"></activity>
     </application>
 
 </manifest>
