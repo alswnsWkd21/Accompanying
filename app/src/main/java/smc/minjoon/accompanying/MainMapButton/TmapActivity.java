@@ -1,4 +1,5 @@
 package smc.minjoon.accompanying.MainMapButton;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -28,7 +29,6 @@ import com.skp.Tmap.TMapData;
 import com.skp.Tmap.TMapMarkerItem;
 import com.skp.Tmap.TMapPOIItem;
 import com.skp.Tmap.TMapPoint;
-import com.skp.Tmap.TMapPolyLine;
 import com.skp.Tmap.TMapView;
 
 import org.w3c.dom.Document;
@@ -47,6 +47,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import smc.minjoon.accompanying.R;
+import smc.minjoon.accompanying.TmapLibrary;
 
 public class TmapActivity extends AppCompatActivity {
     private String TAG = "permissionstatus";
@@ -57,6 +58,7 @@ public class TmapActivity extends AppCompatActivity {
     TextView tv03;
     Button mapbtn01;
     Button mapbtn02;
+    TMapPoint point2;
     ImageButton imgbtn01;
     TMapView tmapview;
     int count =0;
@@ -100,7 +102,7 @@ public class TmapActivity extends AppCompatActivity {
                     final TMapMarkerItem markeritem = arrayList.get(0);
                     tv01.setText(markeritem.getCalloutTitle());
                     tv02.setText(markeritem.getCalloutSubTitle());
-                    final TMapPoint point2 =markeritem.getTMapPoint();
+                    point2 =markeritem.getTMapPoint();
                     mapbtn01.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -113,6 +115,9 @@ public class TmapActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             TMapPoint point1 = new TMapPoint(latitude,longitude);
+                            new TmapLibrary(TmapActivity.this, tmapview).searchRoute(point1, point2);
+
+
 //                            tmapdata.findPathData(point1, point2, new TMapData.FindPathDataListenerCallback() {
 //                                @Override
 //                                public void onFindPathData(TMapPolyLine polyLine) {
@@ -120,13 +125,13 @@ public class TmapActivity extends AppCompatActivity {
 //                                }
 //                            });
 //                              자동차경로도 긁어온다
-                            tmapdata.findPathDataWithType(TMapData.TMapPathType.CAR_PATH, point1, point2,
-                                    new TMapData.FindPathDataListenerCallback() {
-                                        @Override
-                                        public void onFindPathData(TMapPolyLine polyLine) {
-                                            tmapview.addTMapPath(polyLine);
-                                        }
-                                    });
+//                            tmapdata.findPathDataWithType(TMapData.TMapPathType.CAR_PATH, point1, point2,
+//                                    new TMapData.FindPathDataListenerCallback() {
+//                                        @Override
+//                                        public void onFindPathData(TMapPolyLine polyLine) {
+//                                            tmapview.addTMapPath(polyLine);
+//                                        }
+//                                    });
                         }
                     });
                 }
@@ -141,13 +146,14 @@ public class TmapActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             TMapPoint point1 = new TMapPoint(latitude,longitude);
-                            tmapdata.findPathDataWithType(TMapData.TMapPathType.CAR_PATH, point1, tMapPoint,
-                                    new TMapData.FindPathDataListenerCallback() {
-                                        @Override
-                                        public void onFindPathData(TMapPolyLine polyLine) {
-                                            tmapview.addTMapPath(polyLine);
-                                        }
-                                    });
+                            new TmapLibrary(TmapActivity.this, tmapview).searchRoute(point1, tMapPoint);
+//                            tmapdata.findPathDataWithType(TMapData.TMapPathType.CAR_PATH, point1, tMapPoint,
+//                                    new TMapData.FindPathDataListenerCallback() {
+//                                        @Override
+//                                        public void onFindPathData(TMapPolyLine polyLine) {
+//                                            tmapview.addTMapPath(polyLine);
+//                                        }
+//                                    });
                         }
                     });
 

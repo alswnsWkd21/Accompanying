@@ -19,7 +19,7 @@
             android:textSize="23dp"
             android:textColor="#4C4C4C"
             android:text="가까운 곳에서 \n 유저님이 도움을 \n 요청하고 있습니다."
-            android:lineSpacingMultiplier="1.5"
+            android:lineSpacingMultiplier="1.2"
             android:gravity="center"
             android:layout_margin="20dp"
             android:layout_width="match_parent"

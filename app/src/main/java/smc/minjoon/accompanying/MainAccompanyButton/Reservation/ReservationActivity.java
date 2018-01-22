@@ -341,7 +341,7 @@ public class ReservationActivity extends AppCompatActivity {
                         dialo.dismiss();     //닫기
                     }
                 });
-                alert.setMessage("동행길을 효율적으로 사용하기 위해서한 가지의 권한이 필요합니다 \n\n" +
+                alert.setMessage("동행길을 효율적으로 사용하기 위해서 한 가지의 권한이 필요합니다 \n\n" +
                         "위치정보:  현재의 위치를 표시하기 위해 위치정보가 필요합니다");
                 alert.setCancelable(false);
                 alert.show();

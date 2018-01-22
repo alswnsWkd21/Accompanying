@@ -19,6 +19,7 @@
             android:layout_margin="10dp"
             android:background="#fff"
             android:id="@+id/idText"
+            android:paddingLeft="10dp"
             android:hint="  아이디"/>
 
         <EditText
@@ -27,6 +28,7 @@
             android:layout_margin="10dp"
             android:hint="  비밀번호"
             android:background="#fff"
+            android:paddingLeft="10dp"
             android:inputType="textPassword"
             android:id="@+id/passwordText" />
 

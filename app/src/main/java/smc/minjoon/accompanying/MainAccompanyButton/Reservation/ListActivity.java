@@ -33,7 +33,7 @@ public class ListActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         try{
-            JSONObject jsonObject=new JSONObject(intent.getStringExtra("ReservationList"));
+            JSONObject jsonObject=new JSONObject(intent.getStringExtra("userList"));
             JSONArray jsonArray=jsonObject.getJSONArray("response");
             int count=0;
             String userID;
@@ -46,7 +46,7 @@ public class ListActivity extends AppCompatActivity {
 
             while(count<jsonArray.length()){
                 JSONObject object=jsonArray.getJSONObject(count);
-                userID=object.getString("u_id");
+                userID=object.getString("u_ID");
                 reservationID =object.getString("reservationID");
                 reservationPlace=object.getString("reservationPlace");
                 reservationDate=object.getString("reservationDate");

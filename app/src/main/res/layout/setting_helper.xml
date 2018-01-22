@@ -20,7 +20,7 @@
         android:background="#4C9DCC"
         android:layout_weight="1"
         android:id="@+id/setbtn02"
-        android:drawableBottom="@drawable/lockbtn"
+        android:drawableBottom="@drawable/lockbtn2"
 
         />
     <Button

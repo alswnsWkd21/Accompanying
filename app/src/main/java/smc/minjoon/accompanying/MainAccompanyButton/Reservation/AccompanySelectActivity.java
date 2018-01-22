@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import smc.minjoon.accompanying.R;
 
@@ -13,10 +13,10 @@ public class AccompanySelectActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_accompany_select);
+        setContentView(R.layout.accompany_select_activity);
 
-        Button helperbtn=(Button)findViewById(R.id.emergencybtn);
-        Button disabledbtn=(Button)findViewById(R.id.reservationbtn);
+        ImageButton helperbtn=(ImageButton)findViewById(R.id.emergencybtn1);
+        ImageButton disabledbtn=(ImageButton)findViewById(R.id.reservationbtn1);
 
 
         helperbtn.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +34,7 @@ public class AccompanySelectActivity extends AppCompatActivity {
         disabledbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent disabledIntent=new Intent(AccompanySelectActivity.this,ReservationActivity.class);
+                Intent disabledIntent=new Intent(AccompanySelectActivity.this,ReservationSelectActivity.class);
                 AccompanySelectActivity.this.startActivity(disabledIntent);
             }
         });

@@ -54,6 +54,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="4"
+            android:background="@drawable/bg"
+            android:layout_margin="5dp"
             android:text="전송"/>
 
     </LinearLayout>

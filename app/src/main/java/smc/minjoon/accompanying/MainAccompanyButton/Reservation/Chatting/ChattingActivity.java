@@ -171,11 +171,9 @@ public class ChattingActivity extends AppCompatActivity {
 
                         if (success) {
                             tar_id = jsonResponse.getString("helperID");
-                            tar_name = jsonResponse.getString("helperPhone");
+                            tar_name = jsonResponse.getString("helpName");
                             tar_lat = jsonResponse.getDouble("helperLat");
                             tar_long = jsonResponse.getDouble("helperlong");
-
-
                         }
 
                     } catch (JSONException e) {

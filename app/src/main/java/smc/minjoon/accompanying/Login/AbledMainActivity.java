@@ -41,7 +41,6 @@ import java.net.URL;
 
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.ListActivity;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.LocationReceiverService;
-import smc.minjoon.accompanying.MainMapButton.TmapActivity;
 import smc.minjoon.accompanying.MainSettingButton.HelperSettingsActivity;
 import smc.minjoon.accompanying.MainSosButton.InformSos;
 import smc.minjoon.accompanying.R;
@@ -148,7 +147,7 @@ public class AbledMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final AlertDialog.Builder builder = new AlertDialog.Builder(AbledMainActivity.this);
-                builder.setMessage("현재 서비스를 위해 개발 중입니다.")
+                builder.setMessage("현재 서비스를 활성화 기간이 아닙니다.")
                         .setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -157,8 +156,8 @@ public class AbledMainActivity extends AppCompatActivity {
                         })
                         .create()
                         .show();
-                Intent i = new Intent(AbledMainActivity.this, TmapActivity.class);
-                startActivity(i);
+//                Intent i = new Intent(AbledMainActivity.this, TmapActivity.class);
+//                startActivity(i);
             }
         });
         btn02.setOnClickListener(new View.OnClickListener() {
@@ -218,7 +217,13 @@ public class AbledMainActivity extends AppCompatActivity {
     class BackgroundTask extends AsyncTask<Void,Void,String>
     {
         String target;
+        String param;
+        public BackgroundTask(){
 
+        }
+        public BackgroundTask(String helperID){
+            param = helperID;
+        }
         @Override
         protected void onPreExecute(){
             target="http://syoung1394.cafe24.com/List.php";
@@ -256,11 +261,12 @@ public class AbledMainActivity extends AppCompatActivity {
         @Override
         public void onPostExecute(String result){
             Intent intent=new Intent(AbledMainActivity.this, ListActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("userList", result);
             AbledMainActivity.this.startActivity(intent);
         }
     }
-
     private void grantExternalStoragePermission() {
         if (Build.VERSION.SDK_INT >= 23) {
             if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
@@ -281,6 +287,8 @@ public class AbledMainActivity extends AppCompatActivity {
                 alert.setMessage("도우미가 도움을 효율적으로 주기위해서 한 가지의 권한이 필요합니다\n\n" +
                         "위치정보:  장애인분들이 자신에서 가까운 위치에 있는 도우미를 찾아 도움을 요청하기 위해서는 도우미의 위치정보가 필요합니다.");
                 alert.setCancelable(false);
+
+
                 alert.show();
             }
         } else {

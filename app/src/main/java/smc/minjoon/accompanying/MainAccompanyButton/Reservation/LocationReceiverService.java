@@ -100,7 +100,7 @@ public class LocationReceiverService extends Service {
 
         };
 
-        timer.schedule(timertask, 10000, 30000 );
+        timer.schedule(timertask, 10000, 180000 );
     }
 
     @Override
