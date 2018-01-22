@@ -12,15 +12,15 @@ import java.util.Map;
 
 
 
-public class ReservationApplyRequest extends StringRequest {
-    final static private String URL ="http://syoung1394.cafe24.com/ReservationApply.php";
+public class ReservationDeleteRequest extends StringRequest {
+    final static private String URL ="http://syoung1394.cafe24.com/ReservationDelete.php";
     private Map<String, String> parameters;
 
-    public ReservationApplyRequest(String reservationID, String helperID, Response.Listener<String> listener){
+    public ReservationDeleteRequest(String reservationID, Response.Listener<String> listener){
         super(Method.POST, URL, listener, null);
         parameters=new HashMap<>();
         parameters.put("reservationID", reservationID);
-        parameters.put("helperID", helperID);
+
     }
     @Override
     public Map<String, String> getParams(){

@@ -126,6 +126,9 @@
         <activity android:name=".MainSettingButton.MypageActivity" />
         <activity android:name=".MainAccompanyButton.Reservation.ReservationSelectActivity"></activity>
         <activity android:name=".MainSettingButton.HelperSettingsActivity"/>
+        <activity android:name=".MainAccompanyButton.Reservation.userListClickedActivity"/>
+        <activity android:name=".MainAccompanyButton.Reservation.UserListActivity"/>
+
     </application>
 
 </manifest>

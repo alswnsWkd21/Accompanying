@@ -59,7 +59,7 @@ public class ListClickedActivity extends AppCompatActivity {
                             boolean success = jsonResponse.getBoolean("success");
 
                             if (success) {
-                                Intent i = new Intent()
+                                new BackgroundTask(ListClickedActivity.this, helperID).execute();
                             }
 
                         } catch (JSONException e) {

@@ -85,7 +85,7 @@ public class ReservationSelectActivity extends AppCompatActivity {
 
         @Override
         public void onPostExecute(String result){
-            Intent intent=new Intent(ReservationSelectActivity.this, ListActivity.class);
+            Intent intent=new Intent(ReservationSelectActivity.this, UserListActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.putExtra("userList", result);

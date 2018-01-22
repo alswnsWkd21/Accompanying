@@ -8,7 +8,6 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -33,13 +32,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import smc.minjoon.accompanying.MainAccompanyButton.Reservation.ListActivity;
+import smc.minjoon.accompanying.MainAccompanyButton.Reservation.BackgroundTask;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.LocationReceiverService;
 import smc.minjoon.accompanying.MainSettingButton.HelperSettingsActivity;
 import smc.minjoon.accompanying.MainSosButton.InformSos;
@@ -49,6 +42,7 @@ public class AbledMainActivity extends AppCompatActivity {
     private String TAG = "permissionstatus";
     double longitude;
     double latitude;
+    String helperID;
     LocationManager lm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +61,7 @@ public class AbledMainActivity extends AppCompatActivity {
         ImageButton btn03 = (ImageButton ) findViewById(R.id.btn03);
         final SessionManager sessionmanager = new SessionManager(AbledMainActivity.this);
         sessionmanager.checkLogin("helper","helper");
+        helperID=sessionmanager.getKeyId();
         //햄버거 버튼
         final ImageButton hamburger=(ImageButton)findViewById(R.id.hamburger);
 
@@ -140,7 +135,7 @@ public class AbledMainActivity extends AppCompatActivity {
         mainbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                new BackgroundTask().execute();
+                new BackgroundTask(AbledMainActivity.this).execute();
             }
         });
         btn01.setOnClickListener(new View.OnClickListener() {
@@ -163,8 +158,7 @@ public class AbledMainActivity extends AppCompatActivity {
         btn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(AbledMainActivity.this, ListActivity.class);
-                startActivity(i);
+                new BackgroundTask(AbledMainActivity.this,helperID).execute();
             }
         });
         btn03.setOnClickListener(new View.OnClickListener() {
@@ -214,59 +208,59 @@ public class AbledMainActivity extends AppCompatActivity {
 
 
 
-    class BackgroundTask extends AsyncTask<Void,Void,String>
-    {
-        String target;
-        String param;
-        public BackgroundTask(){
-
-        }
-        public BackgroundTask(String helperID){
-            param = helperID;
-        }
-        @Override
-        protected void onPreExecute(){
-            target="http://syoung1394.cafe24.com/List.php";
-        }
-        @Override
-        protected String doInBackground(Void... voids) {
-            try{
-                URL url =new URL(target);
-                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
-                InputStream inputStream=httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                String temp;
-                StringBuilder stringBuilder=new StringBuilder();
-                while((temp=bufferedReader.readLine())!=null)
-                {
-                    stringBuilder.append(temp+"\n");
-                }
-                bufferedReader.close();
-                inputStream.close();
-                httpURLConnection.disconnect();
-                return stringBuilder.toString().trim();
-
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-
-        @Override
-        public void onProgressUpdate(Void... values){
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        public void onPostExecute(String result){
-            Intent intent=new Intent(AbledMainActivity.this, ListActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            intent.putExtra("userList", result);
-            AbledMainActivity.this.startActivity(intent);
-        }
-    }
+//    public class BackgroundTask extends AsyncTask<Void,Void,String>
+//    {
+//        String target;
+//        String param;
+//        public BackgroundTask(){
+//
+//        }
+//        public BackgroundTask(String helperID){
+//            param = helperID;
+//        }
+//        @Override
+//        protected void onPreExecute(){
+//            target="http://syoung1394.cafe24.com/ListConfirm.php?"+ param;
+//        }
+//        @Override
+//        protected String doInBackground(Void... voids) {
+//            try{
+//                URL url =new URL(target);
+//                HttpURLConnection httpURLConnection=(HttpURLConnection) url.openConnection();
+//                InputStream inputStream=httpURLConnection.getInputStream();
+//                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+//                String temp;
+//                StringBuilder stringBuilder=new StringBuilder();
+//                while((temp=bufferedReader.readLine())!=null)
+//                {
+//                    stringBuilder.append(temp+"\n");
+//                }
+//                bufferedReader.close();
+//                inputStream.close();
+//                httpURLConnection.disconnect();
+//                return stringBuilder.toString().trim();
+//
+//            }catch(Exception e){
+//                e.printStackTrace();
+//            }
+//            return null;
+//        }
+//
+//
+//        @Override
+//        public void onProgressUpdate(Void... values){
+//            super.onProgressUpdate(values);
+//        }
+//
+//        @Override
+//        public void onPostExecute(String result){
+//            Intent intent=new Intent(AbledMainActivity.this, ListActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            intent.putExtra("userList", result);
+//            AbledMainActivity.this.startActivity(intent);
+//        }
+//    }
     private void grantExternalStoragePermission() {
         if (Build.VERSION.SDK_INT >= 23) {
             if ((ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
