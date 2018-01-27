@@ -61,6 +61,7 @@ public class TmapActivity extends AppCompatActivity {
     TMapPoint point2;
     ImageButton imgbtn01;
     TMapView tmapview;
+    int i;
     int count =0;
     double longitude;
     double latitude;
@@ -87,7 +88,17 @@ public class TmapActivity extends AppCompatActivity {
 //            lm.requestLocationUpdates( LocationManager.GPS_PROVIDER , 100, 1, mLocationListener );
 //            lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, mLocationListener);
 //        }
+        AlertDialog.Builder alert = new AlertDialog.Builder(TmapActivity.this);
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialo, int which) {
 
+                dialo.dismiss();     //닫기
+            }
+        });
+        alert.setMessage("현재 동행길은 제주도지역 사회복지편의시설만 등록된 상태입니다. 1월28일까지 수도권및 도시별 사회복지편의시설이 등록됩니다.");
+        alert.setCancelable(false);
+        alert.show();
 
         imgbtn01.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +119,19 @@ public class TmapActivity extends AppCompatActivity {
                         public void onClick(View v) {
                             if(markeritem.getCalloutSubTitle()!=null){
                                 startActivity(new Intent("android.intent.action.CALL", Uri.parse("tel:" + markeritem.getName())));
+                            }else{
+                                AlertDialog.Builder alert = new AlertDialog.Builder(TmapActivity.this);
+                                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialo, int which) {
+
+                                        dialo.dismiss();     //닫기
+                                    }
+                                });
+                                alert.setMessage("전화정보가 없는 마커이므로 전화걸기가 제한됩니다.");
+                                alert.setCancelable(false);
+                                alert.show();
+
                             }
                         }
                     });
@@ -177,7 +201,12 @@ public class TmapActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
         new MyAsyncTask().execute("http://www.jeju.go.kr/rest/JejuWelfareFacilitieService/getJejuWelfareFacilitieList");
+//        for(int i = 1; i<100; i++){
+//            new MyAsyncTask2().execute("http://www.bokjiro.go.kr/openapi/nwel/getDisConvFaclList?crtiKey=H51MQdXy3gLtjtsKCg1zDAj4x4r4J3tm8DppZJBj6ue5vSjup5h1pkj5hhM%2BerOj8I3xfkU4TNMKPT%2Fz7L9Ltg%3D%3D&pageNo="+String.valueOf(i)+"&numOfRows=1000&faltycd=21");
+//        }
+
     }
     class MyAsyncTask extends AsyncTask<String,TMapMarkerItem,Void>{
         protected  void onPreExecute(){
@@ -228,7 +257,60 @@ public class TmapActivity extends AppCompatActivity {
 
         }
     }
+    class MyAsyncTask2 extends AsyncTask<String,TMapMarkerItem,Void>{
+        protected  void onPreExecute(){
+            super.onPreExecute();
+        }
+        @Override
+        protected Void doInBackground(String... params) {
+            try{
+                URL url  = new URL(params[0]);
+                InputStream is = url.openStream();
+                DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                Document doc = builder.parse(is);
+                Element root = doc.getDocumentElement();
+                NodeList nl = root.getElementsByTagName("servList");
 
+                for(int i =0; i<nl.getLength(); i++){
+
+                    Element e = (Element)nl.item(i);
+
+                    if(e.getElementsByTagName("faclTyCd").item(0).getTextContent().equals("UC0H04") || e.getElementsByTagName("faclTyCd").item(0).getTextContent().equals("UC0A04")|| e.getElementsByTagName("faclTyCd").item(0).getTextContent().equals("UC0A06")|| e.getElementsByTagName("faclTyCd").item(0).getTextContent().equals("UC0H05")){
+                        TMapPoint tpoint = new TMapPoint(Double.parseDouble(e.getElementsByTagName("faclLat").item(0).getTextContent()), Double.parseDouble(e.getElementsByTagName("faclLng").item(0).getTextContent()));
+                        TMapMarkerItem marker = new TMapMarkerItem();// 마커를 추가하기위한 코드 시작
+//                        marker.setName(e.getElementsByTagName("faclNm").item(0).getTextContent());
+                        marker.setTMapPoint(tpoint);
+                        marker.setCanShowCallout(true);
+                        marker.setCalloutTitle(e.getElementsByTagName("faclNm").item(0).getTextContent());
+                        marker.setCalloutSubTitle(e.getElementsByTagName("lcMnad").item(0).getTextContent());
+                        marker.setVisible(TMapMarkerItem.VISIBLE); // 기본으로 제공하는 BluePin 마커 모양.
+                        publishProgress(marker);
+                    }
+
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onProgressUpdate(TMapMarkerItem... values) {
+
+            tmapview.addMarkerItem(Integer.toString(++count),values[0]);
+        }
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+
+        }
+    }
 
 
     private void grantExternalStoragePermission() {

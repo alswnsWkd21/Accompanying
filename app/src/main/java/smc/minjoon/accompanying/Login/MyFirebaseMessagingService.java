@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import smc.minjoon.accompanying.MainAccompanyButton.Reservation.AccompanyPopupActivity;
+import smc.minjoon.accompanying.MainAccompanyButton.Reservation.HelperAccompany.AccompanyPopupActivity;
 import smc.minjoon.accompanying.R;
 
 

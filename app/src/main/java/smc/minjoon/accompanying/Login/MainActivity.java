@@ -1,9 +1,12 @@
 package smc.minjoon.accompanying.Login;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -13,8 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -26,7 +31,7 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import smc.minjoon.accompanying.MainAccompanyButton.Reservation.AccompanySelectActivity;
+import smc.minjoon.accompanying.MainAccompanyButton.Reservation.UserReservation.AccompanySelectActivity;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.LocationReceiverService;
 import smc.minjoon.accompanying.MainMapButton.TmapActivity;
 import smc.minjoon.accompanying.MainSettingButton.SettingsActivity;
@@ -43,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
+        onCoachMark();
         //트윈 애니메이션
         ImageView ivbtn = (ImageView) findViewById(R.id.imageView);
 
@@ -218,4 +223,26 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }
 //    }
+public void onCoachMark(){
+    final Dialog dialog= new Dialog(this);
+    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    dialog.setContentView(R.layout.popup_help);
+    dialog.setCanceledOnTouchOutside(true);
+    View masterView = dialog.findViewById(R.id.help);
+//    masterView.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View v) {
+//            dialog.dismiss();
+//        }
+//    });
+    Button btn = (Button) dialog.findViewById(R.id.button);
+    btn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            dialog.dismiss();
+        }
+    });
+    dialog.show();
+}
     }

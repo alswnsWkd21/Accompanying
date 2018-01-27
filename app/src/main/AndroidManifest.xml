@@ -88,6 +88,7 @@
         <activity android:name=".Login.PrivacyActivity" />
         <activity android:name=".Login.RegisterActivity" />
         <activity android:name=".Login.ServiceActivity" />
+        <activity android:name=".MainSosButton.InformSosHelper" />
 
         <service
             android:name=".Login.MyFirebaseMessagingService"
@@ -106,12 +107,12 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".MainAccompanyButton.Reservation.AccompanyActivity" />
-        <activity android:name=".MainAccompanyButton.Reservation.AccompanySelectActivity" />
-        <activity android:name=".MainAccompanyButton.Reservation.ListActivity" />
-        <activity android:name=".MainAccompanyButton.Reservation.ListClickedActivity" />
-        <activity android:name=".MainAccompanyButton.Reservation.ReservationActivity" />
-        <activity android:name=".MainAccompanyButton.Reservation.AccompanyLoadingActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserAccompany.AccompanyActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserReservation.AccompanySelectActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.HelperReservation.ListActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.HelperReservation.ListClickedActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserReservation.ReservationActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserAccompany.AccompanyLoadingActivity" />
 
         <service
             android:name=".MainAccompanyButton.Reservation.LocationReceiverService"
@@ -119,16 +120,27 @@
             android:exported="true" />
 
         <activity
-            android:name=".MainAccompanyButton.Reservation.AccompanyPopupActivity"
+            android:name=".MainAccompanyButton.Reservation.HelperAccompany.AccompanyPopupActivity"
             android:label="@string/title_activity_accompany_popup"
             android:theme="@style/AppTheme" />
         <activity android:name=".MainAccompanyButton.Reservation.Chatting.ChattingActivity" />
-        <activity android:name=".MainSettingButton.MypageActivity" />
-        <activity android:name=".MainAccompanyButton.Reservation.ReservationSelectActivity"></activity>
-        <activity android:name=".MainSettingButton.HelperSettingsActivity"/>
-        <activity android:name=".MainAccompanyButton.Reservation.userListClickedActivity"/>
-        <activity android:name=".MainAccompanyButton.Reservation.UserListActivity"/>
-
+        <activity android:name=".MainSettingButton.UserMyPage.MypageActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserReservation.ReservationSelectActivity" />
+        <activity android:name=".MainSettingButton.HelperSettingsActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserReservation.userListClickedActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserReservation.UserListActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.HelperReservation.ConfirmListActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.HelperReservation.ListDetailClickedActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserReservation.ReservationTimeCheck" />
+        <activity android:name=".MainAccompanyButton.Reservation.Chatting.HelperChattingActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.UserAccompany.AccompanyTimeCheck" />
+        <activity android:name=".MainSettingButton.HelperMyPage.HelperMypageActivity" />
+        <activity android:name=".MainSettingButton.UserMyPage.Reservation.ConfirmUserListActivity" />
+        <activity android:name=".MainSettingButton.UserMyPage.Accompany.ConfirmUserList2Activity" />
+        <activity android:name=".MainSettingButton.UserMyPage.Reservation.ConfirmUserListClickedActivity" />
+        <activity android:name=".MainSettingButton.UserMyPage.Accompany.ConfirmUserListClickedActivity2" />
+        <activity android:name=".Login.TimeSelectActivity" />
+        <activity android:name=".MainAccompanyButton.Reservation.Chatting.ReservationChattingActivity"></activity>
     </application>
 
 </manifest>

@@ -6,8 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import smc.minjoon.accompanying.LockScreen.LockScreenActivity;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.NumberActivity;
+import smc.minjoon.accompanying.MainSettingButton.UserMyPage.MypageActivity;
 import smc.minjoon.accompanying.R;
 public class SettingsActivity extends AppCompatActivity {
 
@@ -21,7 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
         setbtn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SettingsActivity.this, LockScreenActivity.class);
+                Intent i = new Intent(SettingsActivity.this, SettinglockActivity.class);
                 startActivity(i);
             }
         });

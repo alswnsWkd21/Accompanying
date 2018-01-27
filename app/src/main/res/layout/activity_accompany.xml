@@ -90,6 +90,7 @@
         android:text="신청하기"
         android:textColor="#fff"
         android:textSize="20dp"
+        android:contentDescription="신청버튼"
         android:background="@drawable/bg_06"
         android:id="@+id/reservationBtn1"/>
 </LinearLayout>

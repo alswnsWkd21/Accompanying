@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:background="#fff"
         android:gravity="center"
-        tools:context="smc.minjoon.accompanying.MainAccompanyButton.Reservation.AccompanySelectActivity">
+        tools:context="smc.minjoon.accompanying.MainAccompanyButton.Reservation.UserReservation.AccompanySelectActivity">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="100dp"

@@ -9,6 +9,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="sos실행 방법 두 번째! 잠금화면 버튼을 옆으로 밀어주세요!"
         android:src="@drawable/fragmentb"/>
 
 </LinearLayout>

@@ -38,7 +38,6 @@ public class DisabledRegisterActivity extends AppCompatActivity {
         final EditText passwordText=(EditText)findViewById(R.id.passwordText);
         final EditText nameText=(EditText)findViewById(R.id.nameText);
         final EditText phoneText=(EditText)findViewById(R.id.phoneText);
-        final EditText photo=(EditText)findViewById(R.id.photo);
         final Button registerBtn=(Button)findViewById(R.id.registerBtn);
         Button service=(Button)findViewById(R.id.service);
         Button privacy=(Button)findViewById(R.id.privacy);
@@ -126,7 +125,7 @@ public class DisabledRegisterActivity extends AppCompatActivity {
                 final String userPassword = passwordText.getText().toString();
                 final String userName = nameText.getText().toString();
                 final String userPhone = phoneText.getText().toString();
-                final String userPhoto = photo.getText().toString();
+                final String userPhoto = "none";
                 final String userToken = FirebaseInstanceId.getInstance().getToken();
                 if(!validate){
                     AlertDialog.Builder builder=new AlertDialog.Builder(DisabledRegisterActivity.this);

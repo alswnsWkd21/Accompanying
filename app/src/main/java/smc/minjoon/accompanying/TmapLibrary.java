@@ -44,8 +44,8 @@ public class TmapLibrary {
                         path.setLineWidth(5);
                         path.setLineColor(Color.RED);
                         tmapview.addTMapPath(path);
-                        Bitmap s = ((BitmapDrawable) ContextCompat.getDrawable( activity, android.R.drawable.ic_input_delete)).getBitmap();
-                        Bitmap e = ((BitmapDrawable)ContextCompat.getDrawable(activity, android.R.drawable.ic_input_get)).getBitmap();
+                        Bitmap s = ((BitmapDrawable) ContextCompat.getDrawable( activity, android.R.drawable.ic_menu_compass)).getBitmap();
+                        Bitmap e = ((BitmapDrawable)ContextCompat.getDrawable(activity, android.R.drawable.presence_online)).getBitmap();
                         tmapview.setTMapPathIcon(s, e);
 
                     }

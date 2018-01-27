@@ -10,6 +10,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import smc.minjoon.accompanying.MainAccompanyButton.Reservation.HelperReservation.ConfirmListActivity;
+import smc.minjoon.accompanying.MainAccompanyButton.Reservation.HelperReservation.ListActivity;
+
 /**
  * Created by skaqn on 2018-01-22.
  */
@@ -67,10 +70,19 @@ public class BackgroundTask extends AsyncTask<Void,Void,String>
 
     @Override
     public void onPostExecute(String result){
-        Intent intent=new Intent(activity, ListActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("userList", result);
-        activity.startActivity(intent);
+        if(param.equals("List.php")){
+            Intent intent=new Intent(activity, ListActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("userList", result);
+            activity.startActivity(intent);
+        }else{
+            Intent intent=new Intent(activity, ConfirmListActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("userList", result);
+            activity.startActivity(intent);
+        }
+
     }
 }

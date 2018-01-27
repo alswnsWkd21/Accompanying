@@ -24,7 +24,8 @@
             android:id="@+id/txtText"
             android:textSize="23dp"
             android:textColor="#4C4C4C"
-            android:text="7초 후, SOS메시지가\n 전송됩니다."
+            android:contentDescription="4초 후 sos 메시지가 전송됩니다."
+            android:text="4초 후, SOS메시지가\n 전송됩니다."
             android:lineSpacingMultiplier="1.5"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -42,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:onClick="mOnClose"
+            android:contentDescription="취소버튼"
             android:id="@+id/button" />
     <!--// 닫기 버튼 -->
 </LinearLayout>

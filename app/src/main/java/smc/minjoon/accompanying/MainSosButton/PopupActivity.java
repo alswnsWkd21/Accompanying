@@ -32,9 +32,7 @@ public class PopupActivity extends Activity {
         TextView txtText = (TextView) findViewById(R.id.txtText);
 
         //데이터 가져오기
-        Intent intent = getIntent();
-        String data = intent.getStringExtra("data");
-        txtText.setText(data);
+
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
@@ -45,7 +43,7 @@ public class PopupActivity extends Activity {
                     finish();
                 }
             }
-        },7000);
+        },3000);
     }
 
     //확인 버튼 클릭

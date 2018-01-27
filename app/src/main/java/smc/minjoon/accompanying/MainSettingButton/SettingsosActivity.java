@@ -16,11 +16,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 import smc.minjoon.accompanying.Login.MainActivity;
+import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
+import smc.minjoon.accompanying.MainSettingButton.ContactButton.NumberActivity;
+import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
 import smc.minjoon.accompanying.MainSosButton.Sos.AlwaysOnTopService;
 import smc.minjoon.accompanying.R;
 
 public class SettingsosActivity extends AppCompatActivity {
+    ArrayList<SingleItem> items = new ArrayList<SingleItem>();
+    DBManager helper;
     private static final int ACTION_MANAGE_OVERLAY_PERMISSION_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,11 +36,27 @@ public class SettingsosActivity extends AppCompatActivity {
 
         Button sosbtn01 = (Button) findViewById(R.id.sosbtn01);
         Button sosbtn02 = (Button) findViewById(R.id.sosbtn02);
+        helper = new DBManager(this, "Number", null, 1);
+        items= helper.getResult();
         grantExternalStoragePermission();
+        if(items.size()==0){
+            AlertDialog.Builder alert = new AlertDialog.Builder(SettingsosActivity.this);
+            alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialo, int which) {
+                    Intent i = new Intent(SettingsosActivity.this, NumberActivity.class);
+                    startActivity(i);
+                }
+            });
+            alert.setMessage("SOS기능을 이용하기 위해서는 보호자를 설정해야합니다.");
+            alert.setCancelable(false);
+            alert.show();
+        }
         sosbtn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkPermission();
+
 //                startService(new Intent(SettingsosActivity.this, AlwaysOnTopService.class));
             }
         });

@@ -12,6 +12,15 @@ public class Reservation {
     String reservationDate;
     String reservationTime;
     String reservationWork;
+    String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getReservationID() {
         return reservationID;
@@ -69,13 +78,15 @@ public class Reservation {
         this.reservationWork = reservationWork;
     }
 
-    public Reservation(String userID,String reservationID, String reservationPlace, String reservationDate, String reservationTime, String reservationWork) {
+    public Reservation(String userID,String reservationID, String reservationPlace, String reservationDate, String reservationTime, String reservationWork, String helperID, String status) {
         this.userID = userID;
         this.reservationID = reservationID;
         this.reservationPlace = reservationPlace;
         this.reservationDate = reservationDate;
         this.reservationTime = reservationTime;
         this.reservationWork = reservationWork;
+        this.helperID = helperID;
+        this.status = status;
     }
 
 //    public Reservation(String userID, String reservationID, String reservationPlace, String reservationDate, String reservationTime, String reservationWork) {

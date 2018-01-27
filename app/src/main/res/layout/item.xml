@@ -24,6 +24,7 @@
             android:layout_weight="4"
             android:background="@drawable/bg"
             android:layout_margin="5dp"
+            android:contentDescription="삭제버튼"
             android:text="삭제"/>
 
 

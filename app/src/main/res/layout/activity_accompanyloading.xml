@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:contentDescription="도우미를 찾고 있습니다."
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,5 +37,6 @@
         android:layout_margin="10dp"
         android:id="@+id/cancelbtn1"
         android:textColor="#fff"
+        android:contentDescription="취소버튼"
         android:background="@drawable/newbg"/>
 </LinearLayout>

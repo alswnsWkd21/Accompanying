@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                                 sessionmanager.editor.putString("phone",helperPhone );
                                 sessionmanager.editor.commit();
 
-//                                sessionmanager.createLoginSession(helperName, helperID, helperToken,"helper" )
+//                              sessionmanager.createLoginSession(helperName, helperID, helperToken,"helper" )
                                 Intent intent=new Intent(LoginActivity.this,AbledMainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

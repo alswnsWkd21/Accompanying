@@ -24,12 +24,14 @@
             android:layout_height="180dp"
             android:src="@drawable/reservation_select"
             android:background="#fff"
+            android:contentDescription="예약버튼"
             android:id="@+id/reservationbtn1"/>
         <ImageButton
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:src="@drawable/emergency_select"
             android:background="#fff"
+            android:contentDescription="긴급버튼"
             android:id="@+id/emergencybtn1"/>
     </LinearLayout>
 

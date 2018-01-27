@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/intro_help2"
+    android:background="@drawable/poppop3"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:id="@+id/help"
+    android:contentDescription="상단 왼쪽에 있는 버튼을 누르면 로그아웃과 도움말을 실행할 수 있습니다. 가운데 있는 동그란 버튼을 누르시면 긴급버튼과 예약버튼을 실행할 수 있습니다.
+    하단에 첫 번째 버튼은 도움길 버튼이고, 두 번째 버튼은 sos위젯설정버튼, 세 번째 버튼은 환경설정버튼입니다. "
     >
     <!-- 닫기 버튼 -->
 
@@ -16,6 +18,7 @@
             android:layout_gravity="right"
             android:layout_margin="10dp"
             android:textColor="#fff"
+            android:contentDescription="닫기버튼"
             android:layout_width="60dp"
             android:layout_height="40dp"
             android:onClick="mOnClose"

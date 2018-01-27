@@ -16,7 +16,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,9 +41,16 @@ import com.skp.Tmap.TMapView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import smc.minjoon.accompanying.Login.AbledMainActivity;
+import smc.minjoon.accompanying.Login.SelectiveActivity;
 import smc.minjoon.accompanying.Login.SessionManager;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.ChattingRequest;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.ChattingRequest2;
+import smc.minjoon.accompanying.MainAccompanyButton.Reservation.UserAccompany.AccompanyLoadingThreeRequest;
+import smc.minjoon.accompanying.MainAccompanyButton.Reservation.UserAccompany.AccompanyTimeCheck;
 import smc.minjoon.accompanying.R;
 import smc.minjoon.accompanying.TmapLibrary;
 
@@ -50,7 +59,9 @@ public class ChattingActivity extends AppCompatActivity {
     TMapView tmapview1;
     ListView listView;
     EditText editText;
-    Button sendButton;;
+    Button sendButton;
+    Button finishBtn;
+    Button cancelBtn;
     double longitude;
     double latitude;
     String accompanyID;
@@ -68,6 +79,8 @@ public class ChattingActivity extends AppCompatActivity {
     String me_id;
     String me_name;
     static int room =0;
+    Timer timer;
+    TimerTask timertask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +90,10 @@ public class ChattingActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listview);
         editText = (EditText) findViewById(R.id.edittext);
         sendButton = (Button) findViewById(R.id.button);
+        finishBtn = (Button) findViewById(R.id.finishBtn);
+        cancelBtn= (Button) findViewById(R.id.cancelBtn);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         room +=1;
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         grantExternalStoragePermission();
@@ -92,6 +109,7 @@ public class ChattingActivity extends AppCompatActivity {
         LinearLayout mapViewContainer = (LinearLayout) findViewById(R.id.map_view);
         mapViewContainer.addView(tmapview1);
         if(sessionmanager.getKeyKind().equals("helper")){
+            finishBtn.setVisibility(View.GONE);
             Intent intent = getIntent();
             tar_id =intent.getStringExtra("userID");
             tar_name=intent.getStringExtra("userName");
@@ -103,7 +121,6 @@ public class ChattingActivity extends AppCompatActivity {
                     try {
                         JSONObject jsonResponse = new JSONObject(response);
                         boolean success = jsonResponse.getBoolean("success");
-
                         if (success) {
                             accompanyID = jsonResponse.getString("accompanyID");
                             databaseReference.child(accompanyID).addChildEventListener(new ChildEventListener() {  // message는 child의 이벤트를 수신합니다.
@@ -111,6 +128,7 @@ public class ChattingActivity extends AppCompatActivity {
                                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                                     ChatData chatData = dataSnapshot.getValue(ChatData.class);  // chatData를 가져오고
                                     adapter.add(chatData.getUserName() + ": " + chatData.getMessage());  // adapter에 추가합니다.
+                                    listView.setSelection(adapter.getCount()-1);
                                 }
 
                                 @Override
@@ -125,14 +143,10 @@ public class ChattingActivity extends AppCompatActivity {
                                 @Override
                                 public void onCancelled(DatabaseError databaseError) { }
                             });
-
-
                         }
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
             };
             ChattingRequest2 chattingRequest2 = new ChattingRequest2(me_id, responseListener);
@@ -148,6 +162,7 @@ public class ChattingActivity extends AppCompatActivity {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     ChatData chatData = dataSnapshot.getValue(ChatData.class);  // chatData를 가져오고
                     adapter.add(chatData.getUserName() + ": " + chatData.getMessage());  // adapter에 추가합니다.
+                    listView.setSelection(adapter.getCount()-1);
                 }
 
                 @Override
@@ -168,32 +183,25 @@ public class ChattingActivity extends AppCompatActivity {
                     try {
                         JSONObject jsonResponse = new JSONObject(response);
                         boolean success = jsonResponse.getBoolean("success");
-
                         if (success) {
                             tar_id = jsonResponse.getString("helperID");
                             tar_name = jsonResponse.getString("helpName");
                             tar_lat = jsonResponse.getDouble("helperLat");
                             tar_long = jsonResponse.getDouble("helperlong");
                         }
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
             };
                 ChattingRequest chattingRequest = new ChattingRequest(helperID, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(ChattingActivity.this);
                 queue.add(chattingRequest);
-
         }
 
 
         me_id = sessionmanager.getKeyId();
         me_name = sessionmanager.getKeyName();
-
-
-
         imgbtn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -211,7 +219,83 @@ public class ChattingActivity extends AppCompatActivity {
         });
 
 
+        finishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ChattingActivity.this, AccompanyTimeCheck.class);
+                i.putExtra("accompanyID", accompanyID);
+                startActivity(i);
+//                여기에는 완료로 바꿔줘야 한다.그리고 시간도!!
+            }
+        });
 
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        timer = new Timer(true);
+        timertask = new TimerTask() {
+            @Override
+            public void run() {
+
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            String status = jsonResponse.getString("status");
+
+                            if (success) {
+                                if(status.equals("도움완료")){
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(ChattingActivity.this);
+                                    builder.setMessage("동행이 완료되었습니다.")
+                                            .setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    timer.cancel();
+                                                    Intent i = new Intent(ChattingActivity.this, AbledMainActivity.class);
+                                                    startActivity(i);
+                                                }
+                                            })
+                                            .create()
+                                            .show();
+                                }
+                            } else {
+
+
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(ChattingActivity.this);
+                                        builder.setMessage("상대방이 요청을 취소하였습니다.")
+                                                .setNegativeButton("확인", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        timer.cancel();
+                                                        Intent i = new Intent(ChattingActivity.this, SelectiveActivity.class);
+                                                        startActivity(i);
+                                                    }
+                                                })
+                                                .create()
+                                                .show();
+
+
+                            }
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                };
+                AccompanyChattingRequest accompanyChattingRequest = new AccompanyChattingRequest(accompanyID,responseListener);
+                RequestQueue queue= Volley.newRequestQueue(ChattingActivity.this);
+                queue.add(accompanyChattingRequest);
+            }
+        };
+
+        timer.schedule(timertask, 3000, 3000 );
 
     }
 
@@ -277,4 +361,53 @@ public class ChattingActivity extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(ChattingActivity.this);
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialo, int which) {
+//                요청삭제 구현
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+                            if(success){
+                                Log.v("three", "데이터지우기성공");
+                                Intent i = new Intent(ChattingActivity.this, SelectiveActivity.class);
+                                startActivity(i);
+                            }else{
+                                Log.v("three", "데이터지우기실패");
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                };
+                AccompanyLoadingThreeRequest accompanyloadingThreeRequest = new AccompanyLoadingThreeRequest(accompanyID, responseListener);
+                RequestQueue queue = Volley.newRequestQueue(ChattingActivity.this);
+                queue.add(accompanyloadingThreeRequest);
+            }
+        });
+        alert.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        alert.setMessage("이 화면을 끌 시 다시 현재 동행길과 연결할 수 없습니다. 정말 동행길 요청을 취소하시겠습니까?");
+        alert.setCancelable(false);
+        alert.show();
+//
+    }
+
+
+
 }

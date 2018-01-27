@@ -1,12 +1,14 @@
 package smc.minjoon.accompanying.MainSettingButton;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import smc.minjoon.accompanying.MainSettingButton.ContactButton.NumberActivity;
+import smc.minjoon.accompanying.MainSettingButton.HelperMyPage.HelperMypageActivity;
 import smc.minjoon.accompanying.R;
 
 public class HelperSettingsActivity extends AppCompatActivity {
@@ -21,21 +23,29 @@ public class HelperSettingsActivity extends AppCompatActivity {
         setbtn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HelperSettingsActivity.this, SettinglockActivity.class);
-                startActivity(i);
+                AlertDialog.Builder builder = new AlertDialog.Builder(HelperSettingsActivity.this);
+                                        builder.setMessage("현재 서비스를 준비중입니다.")
+                                                .setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                })
+                                                .create()
+                                                .show();
             }
         });
         setbtn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HelperSettingsActivity.this, NumberActivity.class);
+                Intent i = new Intent(HelperSettingsActivity.this, SettinglockActivity.class);
                 startActivity(i);
             }
         });
         setbtn03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HelperSettingsActivity.this, MypageActivity.class);
+                Intent i = new Intent(HelperSettingsActivity.this, HelperMypageActivity.class);
                 startActivity(i);
             }
         });

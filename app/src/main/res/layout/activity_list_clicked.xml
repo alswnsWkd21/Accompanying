@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff"
-    tools:context="smc.minjoon.accompanying.MainAccompanyButton.Reservation.ListClickedActivity">
+    tools:context="smc.minjoon.accompanying.MainAccompanyButton.Reservation.HelperReservation.ListClickedActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -25,6 +25,7 @@
             android:padding="10dp"
             android:textSize="17dp"
             android:text="아이디입니다"
+            android:contentDescription="아이디입력"
             android:layout_margin="5dp"
             android:id="@+id/tv_id"
             android:background="@drawable/textview"/>
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:text="날짜입니다"
             android:layout_margin="5dp"
+            android:contentDescription="날짜입력"
             android:padding="10dp"
             android:background="@drawable/textview"
             android:textSize="17dp"
@@ -55,6 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="시간입니다"
+            android:contentDescription="시간입력"
             android:layout_margin="5dp"
             android:textSize="17dp"
             android:padding="10dp"
@@ -71,6 +74,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="장소입니다."
+            android:contentDescription="장소입력"
             android:layout_margin="5dp"
             android:padding="10dp"
             android:background="@drawable/textview"
@@ -88,11 +92,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="내용입니다."
+            android:contentDescription="내용입력"
             android:layout_margin="5dp"
             android:padding="10dp"
             android:background="@drawable/textview"
             android:textSize="17dp"
             android:id="@+id/tv_content"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="상태"
+            android:textSize="17dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="신청받는 중입니다."
+            android:contentDescription="상태"
+            android:layout_margin="5dp"
+            android:padding="10dp"
+            android:background="@drawable/textview"
+            android:textSize="17dp"
+            android:id="@+id/tv_status"/>
     </LinearLayout>
 
 

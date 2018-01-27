@@ -1,10 +1,13 @@
 package smc.minjoon.accompanying.Login;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -18,8 +21,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -35,7 +40,7 @@ import org.json.JSONObject;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.BackgroundTask;
 import smc.minjoon.accompanying.MainAccompanyButton.Reservation.LocationReceiverService;
 import smc.minjoon.accompanying.MainSettingButton.HelperSettingsActivity;
-import smc.minjoon.accompanying.MainSosButton.InformSos;
+import smc.minjoon.accompanying.MainSosButton.InformSosHelper;
 import smc.minjoon.accompanying.R;
 
 public class AbledMainActivity extends AppCompatActivity {
@@ -54,7 +59,7 @@ public class AbledMainActivity extends AppCompatActivity {
         ImageView iv = (ImageView) findViewById(R.id.ball);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.rotate);
         iv.startAnimation(animation);
-
+        onCoachMark();
         ImageView mainbtn=(ImageView)findViewById(R.id.mainBtn);
         ImageButton btn01 = (ImageButton ) findViewById(R.id.btn01);
         ImageButton btn02 = (ImageButton ) findViewById(R.id.btn02);
@@ -81,7 +86,7 @@ public class AbledMainActivity extends AppCompatActivity {
                         String a =String.valueOf(item);
                         if(a.equals("도움말")){
 
-                            Intent i = new Intent(AbledMainActivity.this, InformSos.class);
+                            Intent i = new Intent(AbledMainActivity.this, InformSosHelper.class);
                             startActivity(i);
                         }
                         if(a.equals("로그아웃")){
@@ -141,16 +146,8 @@ public class AbledMainActivity extends AppCompatActivity {
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(AbledMainActivity.this);
-                builder.setMessage("현재 서비스를 활성화 기간이 아닙니다.")
-                        .setPositiveButton("확인", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                               dialog.dismiss();
-                            }
-                        })
-                        .create()
-                        .show();
+               Intent i = new Intent(AbledMainActivity.this, TimeSelectActivity.class);
+                startActivity(i);
 //                Intent i = new Intent(AbledMainActivity.this, TmapActivity.class);
 //                startActivity(i);
             }
@@ -345,4 +342,27 @@ public class AbledMainActivity extends AppCompatActivity {
         public void onProviderDisabled(String provider) {
         }
     };
+
+    public void onCoachMark(){
+        final Dialog dialog= new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.popup_help_helper);
+        dialog.setCanceledOnTouchOutside(true);
+        View masterView = dialog.findViewById(R.id.help);
+//        masterView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
+        Button btn = (Button) dialog.findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 }

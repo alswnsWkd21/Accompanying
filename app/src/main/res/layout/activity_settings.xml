@@ -10,6 +10,7 @@
         android:background="#40CBC6"
         android:drawableBottom="@drawable/lockbtn"
         android:layout_weight="1"
+        android:contentDescription="잠금화면 설정"
         android:id="@+id/setbtn01"/>
 
     />
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#4C9DCC"
+        android:contentDescription="보호자 설정"
         android:layout_weight="1"
         android:id="@+id/setbtn02"
         android:drawableBottom="@drawable/protector"
@@ -28,6 +30,7 @@
         android:layout_height="200dp"
         android:background="#4B7DB7"
         android:layout_weight="1"
+        android:contentDescription="마이페이지"
         android:id="@+id/setbtn03"
         android:drawableBottom="@drawable/mypage"
 

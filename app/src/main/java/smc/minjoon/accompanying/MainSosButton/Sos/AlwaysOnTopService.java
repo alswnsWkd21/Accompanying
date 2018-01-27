@@ -1,10 +1,12 @@
 package smc.minjoon.accompanying.MainSosButton.Sos;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -15,6 +17,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Vibrator;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatButton;
 import android.telephony.SmsManager;
 import android.util.AttributeSet;
@@ -25,12 +29,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.SeekBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import smc.minjoon.accompanying.Login.MainActivity;
+import smc.minjoon.accompanying.Login.RegisterActivity;
+import smc.minjoon.accompanying.MainAccompanyButton.Reservation.UserAccompany.AccompanyActivity;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.DBManager;
 import smc.minjoon.accompanying.MainSettingButton.ContactButton.SingleItem;
 import smc.minjoon.accompanying.MainSosButton.PopupActivity;
@@ -109,10 +116,9 @@ public class AlwaysOnTopService extends Service {
                             for (int i =0; i<items.size(); i++){
                                 sendSMS(items.get(i).getNumber(),items.get(i).getContent() + "\nhttp://maps.google.com/?q="+latitude+","+longitude);
                             }
-
                         }
                     }
-                },10000);
+                },6000);
                 return true;
             }
         });
@@ -266,7 +272,7 @@ public class AlwaysOnTopService extends Service {
                 // in setOnClickListener().
                 performClick();
                 num +=1;
-                if(num >=5){
+                if(num >=3){
                     performLongClick();
                     num =0;
                     return;

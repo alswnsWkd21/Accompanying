@@ -17,6 +17,7 @@
         android:layout_height="70dp"
         android:layout_margin="20dp"
         android:text="도우미로그인"
+        android:contentDescription="도우미 로그인"
         android:textSize="20dp"
         android:textColor="#fff"
         android:background="@drawable/round_helper"
@@ -28,6 +29,7 @@
         android:layout_margin="20dp"
         android:textColor="#fff"
         android:textSize="20dp"
+        android:contentDescription="장애인 로그인"
         android:background="@drawable/round_disabled"
         android:text="장애인로그인"
         android:id="@+id/disabledbtn" />

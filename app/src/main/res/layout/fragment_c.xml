@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/fragmentc"
-        android:layout_margin="35dp"/>
+        android:contentDescription="위젯 버튼을 누르고 있으면 긴급 메시지가 전송됩니다."
+        android:layout_margin="35dp"
+        />
 
 </LinearLayout>
 

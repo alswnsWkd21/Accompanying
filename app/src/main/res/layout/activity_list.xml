@@ -6,10 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="5dp"
+        android:textAlignment="center"
+        android:text="신청목록"
+        android:textSize="20dp"
+        android:textColor="#fff"
+        android:background="@drawable/bg"
+        android:layout_weight="14"/>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:id="@+id/listView"
         >
     </ListView>

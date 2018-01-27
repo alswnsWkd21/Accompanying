@@ -30,33 +30,60 @@
             app:srcCompat="@drawable/location2" />
 
     </RelativeLayout>
+
     <ListView
+        android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listview"
-        android:layout_weight="4"/>
+        android:layout_weight="6" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="8">
+        android:layout_weight="9"
+        android:orientation="horizontal">
 
         <EditText
             android:id="@+id/edittext"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="입력하세요"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:hint="입력하세요" />
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             android:layout_weight="4"
             android:background="@drawable/bg"
+            android:text="전송" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="9"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/finishBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:text="전송"/>
+            android:layout_weight="4"
+            android:background="@drawable/bg"
+            android:text="봉사완료" />
+
+
+        <Button
+            android:id="@+id/cancelBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="4"
+            android:background="@drawable/bg"
+            android:text="봉사취소" />
 
     </LinearLayout>
 

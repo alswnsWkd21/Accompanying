@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingTop="10dp"
+            android:textAlignment="center"
+            android:text="봉사시간을 등록해 주세요"
+            android:textSize="20dp"
+            android:textColor="#fff"
+            android:background="@drawable/bg"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:textSize="20dp"
+            android:text="봉사시작 시간"
+            android:layout_marginTop="40dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:id="@+id/starttime"
+            android:focusable="false"
+            android:background="@drawable/note_outline_06"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:textSize="20dp"
+            android:text="봉사종료 시간"
+            android:layout_marginTop="40dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:focusable="false"
+            android:id="@+id/endtime"
+            android:background="@drawable/note_outline_06"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="등록하기"
+        android:textColor="#fff"
+        android:textSize="20dp"
+        android:background="@drawable/bg_06"
+        android:id="@+id/reservationWorkTimeBtn"/>
+</LinearLayout>
