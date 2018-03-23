@@ -1,4 +1,4 @@
-package smc.minjoon.accompanying.Login;
+package smc.minjoon.accompanying.Login.NoneLogin;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -13,7 +13,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -24,27 +23,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import smc.minjoon.accompanying.MainAccompanyButton.Reservation.UserReservation.AccompanySelectActivity;
 import smc.minjoon.accompanying.MainMapButton.TmapActivity;
-import smc.minjoon.accompanying.MainSettingButton.SettingsActivity;
 import smc.minjoon.accompanying.MainSettingButton.SettingsosActivity;
 import smc.minjoon.accompanying.MainSosButton.InformSos;
 import smc.minjoon.accompanying.R;
 
-public class MainActivity extends AppCompatActivity {
+public class NoneMainActivity extends AppCompatActivity {
     private String TAG = "permissionstatus";
     ImageButton hamburger;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_none_main);
 
 
         onCoachMark();
@@ -58,18 +48,26 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btn01 = (ImageButton ) findViewById(R.id.btn01);
         ImageButton btn02 = (ImageButton ) findViewById(R.id.btn02);
         ImageButton btn03 = (ImageButton ) findViewById(R.id.btn03);
-        final SessionManager sessionmanager = new SessionManager(MainActivity.this);
-        sessionmanager.checkLogin("user","user");
+//        final SessionManager sessionmanager = new SessionManager(NoneMainActivity.this);
+        AlertDialog.Builder alert = new AlertDialog.Builder(NoneMainActivity.this);
+        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialo, int which) {
+                dialo.dismiss();     //닫기
+            }
+        });
+        alert.setMessage("로그인 없이 입장하여 동행길 기능이 제한됩니다.");
+        alert.setCancelable(false);
+        alert.show();
         //햄버거 버튼
-         hamburger=(ImageButton)findViewById(R.id.hamburger);
-
+        hamburger=(ImageButton)findViewById(R.id.hamburger);
 
 
         hamburger.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(MainActivity.this, hamburger);
+                PopupMenu popup = new PopupMenu(NoneMainActivity.this, hamburger);
                 //Inflating the Popup using xml file
                 popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
 
@@ -82,18 +80,27 @@ public class MainActivity extends AppCompatActivity {
                         if(a.equals("도움말")){
 
 
-                            Intent i = new Intent(MainActivity.this, InformSos.class);
+                            Intent i = new Intent(NoneMainActivity.this, InformSos.class);
                             startActivity(i);
                         }
                         if(a.equals("로그아웃")){
-                            sessionmanager.logoutUser();
+                            AlertDialog.Builder alert = new AlertDialog.Builder(NoneMainActivity.this);
+                            alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialo, int which) {
+                                    dialo.dismiss();     //닫기
+                                }
+                            });
+                            alert.setMessage("로그인을 하여야 이용가능한 서비스입니다.");
+                            alert.setCancelable(false);
+                            alert.show();
                         }
                         return true;
                     }
                 });
                 popup.show();
             }
-        });//closing the setOnClickListener method
+        });//closing the setOnClickLi
 
 
         grantExternalStoragePermission();
@@ -102,60 +109,68 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        if(sessionmanager.getKeyOk().equals("refresh")){
-            String id =sessionmanager.getKeyId();
-            String token=sessionmanager.getKeyToken();
-            String kind=sessionmanager.getKeyKind();
-            Response.Listener<String> responseListener = new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    try {
-                        JSONObject jsonResponse = new JSONObject(response);
-                        boolean success = jsonResponse.getBoolean("success");
-                        if (success) {
-                            sessionmanager.editor.putString("ok", "refreshed");
-                            sessionmanager.editor.commit();
-                            Log.v("refresh","리프레쉬됨");
-                        } else {
-                            Log.v("refresh","안됨");
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            };
-            SessionRequest sessionRequest1 = new SessionRequest(kind,id, token, responseListener);
-            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-            queue.add(sessionRequest1);
-
-        }
+//        if(sessionmanager.getKeyOk().equals("refresh")){
+//            String id =sessionmanager.getKeyId();
+//            String token=sessionmanager.getKeyToken();
+//            String kind=sessionmanager.getKeyKind();
+//            Response.Listener<String> responseListener = new Response.Listener<String>() {
+//                @Override
+//                public void onResponse(String response) {
+//                    try {
+//                        JSONObject jsonResponse = new JSONObject(response);
+//                        boolean success = jsonResponse.getBoolean("success");
+//                        if (success) {
+//                            sessionmanager.editor.putString("ok", "refreshed");
+//                            sessionmanager.editor.commit();
+//                            Log.v("refresh","리프레쉬됨");
+//                        } else {
+//                            Log.v("refresh","안됨");
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//            };
+//            SessionRequest sessionRequest1 = new SessionRequest(kind,id, token, responseListener);
+//            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+//            queue.add(sessionRequest1);
+//
+//        }
 
         ivbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, AccompanySelectActivity.class);
-                startActivity(i);
+                AlertDialog.Builder alert = new AlertDialog.Builder(NoneMainActivity.this);
+                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialo, int which) {
+                        dialo.dismiss();     //닫기
+                    }
+                });
+                alert.setMessage("로그인을 하여야 이용가능한 서비스입니다.");
+                alert.setCancelable(false);
+                alert.show();
             }
         });
         btn01.setOnClickListener(new View.OnClickListener() {
             @Override
-        public void onClick(View v) {
-        Intent i = new Intent(MainActivity.this, TmapActivity.class);
-        startActivity(i);
-        }
+            public void onClick(View v) {
+                Intent i = new Intent(NoneMainActivity.this, TmapActivity.class);
+                startActivity(i);
+            }
         });
         btn02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SettingsosActivity.class);
+                Intent i = new Intent(NoneMainActivity.this, SettingsosActivity.class);
                 startActivity(i);
             }
         });
         btn03.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+                Intent i = new Intent(NoneMainActivity.this, NoneSettingActivity.class);
                 startActivity(i);
             }
         });
@@ -169,11 +184,11 @@ public class MainActivity extends AppCompatActivity {
 
                 //만약 두개의 퍼미션이 전부 허락되어있다면 true반환
             } else {
-                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                AlertDialog.Builder alert = new AlertDialog.Builder(NoneMainActivity.this);
                 alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialo, int which) {
-                        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CALL_PHONE}, 1);
+                        ActivityCompat.requestPermissions(NoneMainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.RECEIVE_SMS, Manifest.permission.SEND_SMS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.CALL_PHONE}, 1);
                         dialo.dismiss();     //닫기
                     }
                 });
@@ -192,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    @Override
+    //    @Override
 //    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 //        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 //        if (Build.VERSION.SDK_INT >= 23) {
@@ -222,26 +237,27 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        }
 //    }
-public void onCoachMark(){
-    final Dialog dialog= new Dialog(this);
-    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-    dialog.setContentView(R.layout.popup_help);
-    dialog.setCanceledOnTouchOutside(true);
-    View masterView = dialog.findViewById(R.id.help);
+    public void onCoachMark(){
+        final Dialog dialog= new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.popup_help);
+        dialog.setCanceledOnTouchOutside(true);
+        View masterView = dialog.findViewById(R.id.help);
 //    masterView.setOnClickListener(new View.OnClickListener() {
 //        @Override
 //        public void onClick(View v) {
 //            dialog.dismiss();
 //        }
 //    });
-    Button btn = (Button) dialog.findViewById(R.id.button);
-    btn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            dialog.dismiss();
-        }
-    });
-    dialog.show();
-}
+        Button btn = (Button) dialog.findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
+
+}

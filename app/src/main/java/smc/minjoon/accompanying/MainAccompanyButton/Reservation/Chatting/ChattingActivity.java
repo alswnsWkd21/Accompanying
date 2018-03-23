@@ -66,6 +66,7 @@ public class ChattingActivity extends AppCompatActivity {
     double latitude;
     String accompanyID;
     ArrayAdapter adapter;
+
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     Location userlocation;
@@ -86,14 +87,13 @@ public class ChattingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatting_activity);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         imgbtn01 = (ImageButton) findViewById(R.id.imgbtn1);
         listView = (ListView) findViewById(R.id.listview);
         editText = (EditText) findViewById(R.id.edittext);
         sendButton = (Button) findViewById(R.id.button);
         finishBtn = (Button) findViewById(R.id.finishBtn);
         cancelBtn= (Button) findViewById(R.id.cancelBtn);
-
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         room +=1;
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         grantExternalStoragePermission();

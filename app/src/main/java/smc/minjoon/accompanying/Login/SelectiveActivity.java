@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import smc.minjoon.accompanying.Login.NoneLogin.NoneMainActivity;
 import smc.minjoon.accompanying.R;
 
 public class SelectiveActivity extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class SelectiveActivity extends AppCompatActivity {
 
         Button helperbtn=(Button)findViewById(R.id.helperbtn);
         Button disabledbtn=(Button)findViewById(R.id.disabledbtn);
-
+        Button freepassbtn=(Button)findViewById(R.id.freepassbtn);
     
         helperbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,18 @@ public class SelectiveActivity extends AppCompatActivity {
                 disabledIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 // Staring Login Activity
                 SelectiveActivity.this.startActivity(disabledIntent);
+            }
+        });
+
+        freepassbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent free=new Intent(SelectiveActivity.this,NoneMainActivity.class);
+                free.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+// Add new Flag to start new Activity
+                free.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+// Staring Login Activity
+                SelectiveActivity.this.startActivity(free);
             }
         });
     }

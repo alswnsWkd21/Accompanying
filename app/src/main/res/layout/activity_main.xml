@@ -13,7 +13,7 @@
             android:src="@drawable/hamburger"
             android:layout_margin="10dp"
             android:id="@+id/hamburger"
-            android:contentDescription="도움말과 로그아웃 버튼"
+            android:contentDescription="도움말과 로그아웃"
             android:background="#fff"/>
 
         <ImageView
@@ -21,7 +21,7 @@
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:src="@drawable/btn_main"
-            android:contentDescription="긴급버튼과 예약버튼"
+            android:contentDescription="긴급버튼과 예약"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="67dp"
 
@@ -60,7 +60,8 @@
                     android:id="@+id/btn02"
                     android:src="@drawable/sos3"
                     android:background="#eee"
-                    android:contentDescription="sos위젯 설정"
+                    android:contentDescription="에쓰오에쓰
+                    위젯 설정"
                     android:layout_weight="1"/>
                 <ImageButton
                     android:layout_width="100dp"

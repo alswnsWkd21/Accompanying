@@ -96,9 +96,9 @@ public class TmapActivity extends AppCompatActivity {
                 dialo.dismiss();     //닫기
             }
         });
-        alert.setMessage("현재 동행길은 제주도지역 사회복지편의시설만 등록된 상태입니다. 1월28일까지 수도권및 도시별 사회복지편의시설이 등록됩니다.");
-        alert.setCancelable(false);
-        alert.show();
+//        alert.setMessage("현재 동행길은 제주도지역 사회복지편의시설만 등록된 상태입니다. 1월28일까지 수도권및 도시별 사회복지편의시설이 등록됩니다.");
+//        alert.setCancelable(false);
+//        alert.show();
 
         imgbtn01.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,10 +202,10 @@ public class TmapActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        new MyAsyncTask().execute("http://www.jeju.go.kr/rest/JejuWelfareFacilitieService/getJejuWelfareFacilitieList");
-//        for(int i = 1; i<100; i++){
-//            new MyAsyncTask2().execute("http://www.bokjiro.go.kr/openapi/nwel/getDisConvFaclList?crtiKey=H51MQdXy3gLtjtsKCg1zDAj4x4r4J3tm8DppZJBj6ue5vSjup5h1pkj5hhM%2BerOj8I3xfkU4TNMKPT%2Fz7L9Ltg%3D%3D&pageNo="+String.valueOf(i)+"&numOfRows=1000&faltycd=21");
-//        }
+//        new MyAsyncTask().execute("http://www.jeju.go.kr/rest/JejuWelfareFacilitieService/getJejuWelfareFacilitieList");
+        for(int i = 1; i<50; i++){
+            new MyAsyncTask2().execute("http://www.bokjiro.go.kr/openapi/nwel/getDisConvFaclList?crtiKey=H51MQdXy3gLtjtsKCg1zDAj4x4r4J3tm8DppZJBj6ue5vSjup5h1pkj5hhM%2BerOj8I3xfkU4TNMKPT%2Fz7L9Ltg%3D%3D&pageNo="+String.valueOf(i)+"&numOfRows=1000&faltycd=21");
+        }
 
     }
     class MyAsyncTask extends AsyncTask<String,TMapMarkerItem,Void>{

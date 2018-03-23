@@ -132,7 +132,6 @@
         <activity android:name=".MainAccompanyButton.Reservation.HelperReservation.ConfirmListActivity" />
         <activity android:name=".MainAccompanyButton.Reservation.HelperReservation.ListDetailClickedActivity" />
         <activity android:name=".MainAccompanyButton.Reservation.UserReservation.ReservationTimeCheck" />
-        <activity android:name=".MainAccompanyButton.Reservation.Chatting.HelperChattingActivity" />
         <activity android:name=".MainAccompanyButton.Reservation.UserAccompany.AccompanyTimeCheck" />
         <activity android:name=".MainSettingButton.HelperMyPage.HelperMypageActivity" />
         <activity android:name=".MainSettingButton.UserMyPage.Reservation.ConfirmUserListActivity" />
@@ -140,7 +139,9 @@
         <activity android:name=".MainSettingButton.UserMyPage.Reservation.ConfirmUserListClickedActivity" />
         <activity android:name=".MainSettingButton.UserMyPage.Accompany.ConfirmUserListClickedActivity2" />
         <activity android:name=".Login.TimeSelectActivity" />
-        <activity android:name=".MainAccompanyButton.Reservation.Chatting.ReservationChattingActivity"></activity>
+        <activity android:name=".MainAccompanyButton.Reservation.Chatting.ReservationChattingActivity" />
+        <activity android:name=".Login.NoneLogin.NoneMainActivity" />
+        <activity android:name=".Login.NoneLogin.NoneSettingActivity"></activity>
     </application>
 
 </manifest>
