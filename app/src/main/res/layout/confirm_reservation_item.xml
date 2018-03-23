@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/bg1">
+
+        <!--<Button-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:id="@+id/remove"-->
+            <!--android:text="취소하기"/>-->
+        <!--<Button-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:id="@+id/chating"-->
+            <!--android:text="채팅하기"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:id="@+id/bg3"
+            android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reservationID1"
+                    android:visibility="gone"
+                    android:text="아이디"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reservationDate1"
+                    android:textColor="#000000"
+                    android:text="날짜"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reservationTime1"
+                    android:textColor="#000000"
+                    android:text="시간"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:id="@+id/reservationPlace1"
+                    android:text="장소"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"
+                    android:id="@+id/reservationWork1"
+                    android:singleLine="true"
+                    android:text="할일"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bg2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/reservationID"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="아이디"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/reservationDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="날짜"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/reservationTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="시간"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/reservationPlace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="장소"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/reservationWork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="할일"
+                    android:textColor="#000000" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:textSize="15dp"
+            android:id="@+id/statusBtn"/>
+</LinearLayout>

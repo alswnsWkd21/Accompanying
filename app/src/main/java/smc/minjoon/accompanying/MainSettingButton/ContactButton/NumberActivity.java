@@ -1,10 +1,12 @@
 package smc.minjoon.accompanying.MainSettingButton.ContactButton;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -25,6 +27,8 @@ public class NumberActivity extends AppCompatActivity {
     public ListViewAdapter adapter;
     private ListView listview01;
     int index;
+    String status;
+    String status2;
     DBManager helper;
     SQLiteDatabase database;
     @Override
@@ -40,6 +44,9 @@ public class NumberActivity extends AppCompatActivity {
         listview01.setAdapter(adapter);// listview에 adapter셋팅
 //        add("sdfsdf","sdfsdf");
         Button btn01 = (Button) findViewById(R.id.btn01);
+        Button btn02 = (Button) findViewById(R.id.btn02);
+        Button btn03 = (Button) findViewById(R.id.btn03);
+
         listview01.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -59,6 +66,92 @@ public class NumberActivity extends AppCompatActivity {
                 // 글쓰기 버튼을 눌렀을 때 noteedit클래스로 가게 만들었다. 결과값받을 수 있는 함수를 써야 noteedit에서 쓴 정보를 다시 돌려받아서 listview에 뿌릴 수 있다.
                 Intent intent = new Intent(NumberActivity.this, NoteeditActivity.class);
                 startActivityForResult(intent, 0);
+            }
+        });
+        btn02.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status="ok";
+                for(int i=0; i<adapter.items.size(); i++){
+                    if(adapter.items.get(i).getTitle().equals("112")){
+                        status = "no";
+                        AlertDialog.Builder alert = new AlertDialog.Builder(NumberActivity.this);
+                        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialo, int which) {
+
+                                dialo.dismiss();
+                            }
+                        });
+                        alert.setMessage("이미 112를 추가하셨습니다.");
+                        alert.setCancelable(false);
+                        alert.show();
+                 }
+                }
+                if(status.equals("ok")){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(NumberActivity.this);
+                    alert.setPositiveButton("추가", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialo, int which) {
+                            helper.insert("112", "장애인의 도움요청입니다. 위치를 확인해주세요", "112");
+                            adapter.items=helper.getResult(); // Database에 있는 모든 값들을 Arraylist items에 넣는다.
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    alert.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialo, int which) {
+                            dialo.dismiss();     //닫기
+                        }
+                    });
+                    alert.setMessage("sos기능 실행 시 112에도 sos요청을 보낼 수 있습니다. 119 기능을 실행 시 장난으로 sos요청하는 것을 엄격히 금합니다. 112를 추가하시겠습니까?");
+                    alert.setCancelable(false);
+                    alert.show();
+                }
+        }
+        });
+
+        btn03.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                status2="ok";
+                for(int i=0; i<adapter.items.size(); i++){
+                    if(adapter.items.get(i).getTitle().equals("119")){
+                        status2 = "no";
+                        AlertDialog.Builder alert = new AlertDialog.Builder(NumberActivity.this);
+                        alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialo, int which) {
+
+                                dialo.dismiss();
+                            }
+                        });
+                        alert.setMessage("이미 119를 추가하셨습니다.");
+                        alert.setCancelable(false);
+                        alert.show();
+                    }
+                }
+                if(status2.equals("ok")){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(NumberActivity.this);
+                    alert.setPositiveButton("추가", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialo, int which) {
+                            helper.insert("119", "장애인의 도움요청입니다. 위치를 확인해주세요", "119");
+                            adapter.items=helper.getResult(); // Database에 있는 모든 값들을 Arraylist items에 넣는다.
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
+                    alert.setNegativeButton("아니요", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialo, int which) {
+                            dialo.dismiss();     //닫기
+                        }
+                    });
+                    alert.setMessage("sos기능 실행 시 119에도 sos요청을 보낼 수 있습니다. 119 기능을 실행 시 장난으로 sos요청하는 것을 엄격히 금합니다. 119를 추가하시겠습니까?");
+                    alert.setCancelable(false);
+                    alert.show();
+                }
+
             }
         });
     }

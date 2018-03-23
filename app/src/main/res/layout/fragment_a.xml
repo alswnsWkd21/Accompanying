@@ -8,7 +8,9 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/fragmenta"/>
+        android:src="@drawable/fragmenta"
+        android:contentDescription="sos실행 방법 첫 번째! 위젯 버튼을 누르세요!"
+        android:layout_margin="30dp"/>
 
 </LinearLayout>
 

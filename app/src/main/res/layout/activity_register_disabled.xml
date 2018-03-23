@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="sinabro.test.LoginActivity"
     android:background="#fff">
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +26,7 @@
             android:layout_height="40dp"
             android:textSize="15dp"
             android:text="전체보기"
+            android:contentDescription="서비스 이용약관에 대한 내용입니다."
             android:layout_marginRight="10dp"
             android:id="@+id/service"/>
     </LinearLayout>
@@ -48,6 +48,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:textSize="15dp"
+            android:contentDescription="개이정보 수집 이용에 대한 내용입니다."
             android:text="전체보기"
             android:layout_marginRight="10dp"
             android:id="@+id/privacy"/>
@@ -69,7 +70,12 @@
             android:textSize="15dp"
             android:textStyle="bold"
             android:layout_marginTop="30dp"/>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:text="*아이디는 영어와 숫자를 포함하여 6-20자로 입력해주세요"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -85,12 +91,14 @@
             <EditText
                 android:layout_width="150dp"
                 android:layout_height="50dp"
+                android:contentDescription="아이디는 영어와 숫자를 포함하여 6-20자로 입력해주세요"
                 android:id="@+id/idText"
                 android:layout_weight="1"/>
             <Button
                 android:layout_width="80dp"
                 android:layout_height="40dp"
                 android:text="중복검사"
+                android:contentDescription="중복검사"
                 android:textSize="15dp"
                 android:textColor="#fff"
                 android:layout_margin="5dp"
@@ -98,7 +106,12 @@
                 android:background="@drawable/bg"
                 android:id="@+id/validateBtn"/>
         </LinearLayout>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:text="*비밀번호는 영어, 숫자, 기호를 포함하여 8-20자로 입력해주세요"/>
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -114,8 +127,11 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:contentDescription="비밀번호는 영어, 숫자, 기호를 포함하여 8-20자로 입력해주세요"
+            android:inputType="textPassword"
             android:id="@+id/passwordText" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -129,10 +145,17 @@
             android:text="이름"
             />
         <EditText
+            android:contentDescription="이름을 입력해주세요"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/nameText" />
     </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:text="*핸드폰번호는 -없이 입력해주세요"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -146,27 +169,12 @@
             android:layout_marginLeft="10dp"
             />
         <EditText
+            android:contentDescription="핸드폰 번호를 입력해주세요"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:id="@+id/phoneText" />
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="@drawable/textview"
-        android:layout_margin="5px">
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:text="인증첨부파일"
-            android:layout_marginLeft="10dp"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/photo" />
-    </LinearLayout>
+
 
     </LinearLayout>
     <Button
@@ -174,6 +182,7 @@
         android:layout_height="50dp"
         android:text="회 원 가 입"
         android:textSize="20dp"
+        android:contentDescription="회원가입"
         android:textColor="#fff"
         android:layout_gravity="center"
         android:layout_margin="10dp"

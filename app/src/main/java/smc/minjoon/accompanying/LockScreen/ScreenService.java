@@ -48,7 +48,7 @@ public class ScreenService extends Service {
         public int onStartCommand(Intent intent, int flags, int startId){
             super.onStartCommand(intent, flags, startId);
             Notification notification = new Notification.Builder(getApplicationContext()).setContentTitle("Screen Service").
-                    setContentText("수정해야한다.").
+                    setContentText("동행길 잠금화면이 활성화 되었습니다..").
                     setSmallIcon(R.drawable.example_appwidget_preview).
                     build(); // Notification에 굳잉 설정을 해주지않고 객체만 넣어서 이거 설정해줘야 한다.
             startForeground(1, notification );

@@ -3,102 +3,47 @@
     android:background="#fff"
     android:orientation="vertical"
     android:layout_width="300dp"
-    android:layout_height="250dp"
+    android:layout_height="220dp"
     android:layout_gravity="center"
     android:id="@+id/ll01"
-
     >
 
-    <!-- 타이틀바 -->
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/confirm"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"/>
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:text="알        림"
-            android:textStyle="bold"
-            android:textSize="25sp"
-            android:textColor="#000"
-            android:gravity="center"
-            android:background="#fff"
-            android:layout_width="match_parent"
-            android:layout_height="53dp" />
-    </LinearLayout>
-    <!-- //end 타이틀바 -->
 
-    <!-- Notice -->
-    <LinearLayout
-        android:padding="5dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_centerInParent="true"
-            android:background="#00B0F0"/>
-
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/txtText"
-            android:textSize="25dp"
-            android:textColor="#000"
-            android:text="7초 후 "
-            android:alpha="0.87"
+            android:textSize="23dp"
+            android:textColor="#4C4C4C"
+            android:contentDescription="4초 후 sos 메시지가 전송됩니다."
+            android:text="4초 후, SOS메시지가\n 전송됩니다."
+            android:lineSpacingMultiplier="1.5"
             android:gravity="center"
-            android:layout_marginTop="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="위급상황 메시지가"
-            android:textSize="30dp"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:textColor="#000"
-            android:alpha="0.87"
-            android:gravity="center"
-            android:layout_weight="0.42" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="날라갑니다!"
-            android:textSize="25dp"
-            android:textAlignment="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="12dp"
-            android:textColor="#000"
-            android:alpha="0.87"
-
-            android:gravity="center"
-            />
     </LinearLayout>
-    <!-- Notice -->
-
-    <View
-        android:background="#fff"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
 
     <!-- 닫기 버튼 -->
-    <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <Button
             android:text="취         소"
-            android:textSize="30dp"
-            android:textColor="#fff"
+            android:textSize="20dp"
             android:gravity="center"
-            android:background="#35C7F1"
+            android:textColor="#fff"
+            android:background="@drawable/bg_06"
             android:layout_width="match_parent"
-            android:layout_height="53dp"
+            android:layout_height="40dp"
             android:onClick="mOnClose"
+            android:contentDescription="취소버튼"
             android:id="@+id/button" />
-    </LinearLayout>
     <!--// 닫기 버튼 -->
 </LinearLayout>

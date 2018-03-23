@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    >
+
+    <ImageView
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:src="@drawable/message"
+        android:layout_gravity="center"
+        android:layout_weight="5"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"
+        >
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:id="@+id/sosbtn01"
+            android:background="@drawable/bg"
+            android:text="사  용"
+            android:textSize="22dp"
+            android:contentDescription="사용"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            />
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:id="@+id/sosbtn02"
+            android:text="거   절"
+            android:background="@drawable/bg"
+            android:textSize="22dp"
+            android:contentDescription="거절"
+            android:textColor="#fff"
+            android:textAlignment="center"
+            android:layout_margin="10dp"
+            android:gravity="center"
+
+
+            />
+    </LinearLayout>
+</LinearLayout>

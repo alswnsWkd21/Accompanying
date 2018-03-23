@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Accompanying</string>
-    <string name="appwidget_text">EXAMPLE</string>
+    <string name="app_name">동행길</string>
+    <string name="appwidget_text">동행길활성화</string>
     <string name="add_widget">Add widget</string>
+    <string name="title_activity_accompany_popup">AccompanyPopupActivity</string>
 </resources>

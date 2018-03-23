@@ -36,5 +36,6 @@
         app:button_top_padding="18dp"
         android:layout_weight="6"
         app:button_bottom_padding="18dp"
+        android:contentDescription="옆으로 밀면 동행길 앱이 실행됩니다."
         app:button_background="@drawable/swipe2"/>
 </LinearLayout>

@@ -4,15 +4,27 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context="smc.minjoon.accompanying.Login.MainActivity">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/hamburger"
+            android:layout_margin="10dp"
+            android:id="@+id/hamburger"
+            android:contentDescription="도움말과 로그아웃"
+            android:background="#fff"/>
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:src="@drawable/btn_main"
+            android:contentDescription="긴급버튼과 예약"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="67dp"
+
             />
         <ImageView
             android:layout_width="15dp"
@@ -38,6 +50,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:src="@drawable/map3"
+                    android:contentDescription="도움길"
                     android:id="@+id/btn01"
                     android:background="#eee"
                     android:layout_weight="1"/>
@@ -47,10 +60,13 @@
                     android:id="@+id/btn02"
                     android:src="@drawable/sos3"
                     android:background="#eee"
+                    android:contentDescription="에쓰오에쓰
+                    위젯 설정"
                     android:layout_weight="1"/>
                 <ImageButton
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:contentDescription="환경설정"
                     android:src="@drawable/setting3"
                     android:id="@+id/btn03"
                     android:background="#eee"
